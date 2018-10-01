@@ -2,7 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { AngularFireModule } from '@angular/fire';
+import { AngularFireModule } from '@angular/fire'; 
+
+import { FormsModule } from "@angular/forms";
 
 import { environment } from '../environments/environment';
 
@@ -21,15 +23,16 @@ import { CategoriesComponent } from './categories/categories.component';
     MapComponent,
     FormComponent,
     HeaderComponent,
-    AngularFireModule,
-    AngularFireDatabaseModule,
     ModalDetailsComponent,
     InputSearchComponent,
     SplashComponent,
     CategoriesComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]

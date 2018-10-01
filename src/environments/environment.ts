@@ -6,13 +6,14 @@ export const environment = {
   production: false,
   firebase: {
     apiKey: "AIzaSyAHao8Hqjy4gSlKhkb4JnFY_7NKITFd_is",
-    authDomain: "here-hackaton.firebaseapp.com",
-    databaseURL: "https://here-hackaton.firebaseio.com",
-    projectId: "here-hackaton",
-    storageBucket: "here-hackaton.appspot.com",
-    messagingSenderId: "750300690567"
-  }
-};
+  authDomain: "here-hackaton.firebaseapp.com",
+  databaseURL: "https://here-hackaton.firebaseio.com",
+  projectId: "here-hackaton",
+  storageBucket: "here-hackaton.appspot.com",
+  messagingSenderId: "750300690567"
+}
+}
+
 
 /*
  * In development mode, for easier debugging, you can ignore zone related error
