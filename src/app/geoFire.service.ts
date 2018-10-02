@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { GeoFire } from 'geofire';
+import { GeoFire } from '../geoFire';
 
 import { BehaviorSubject } from 'rxjs'
 
