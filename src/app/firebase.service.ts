@@ -7,12 +7,12 @@ import { GeoService } from './geoFire.service';
 })
 
 export class FirebaseService {
-
   constructor(private database:AngularFireDatabase, private geo: GeoService) { }
   addData(object){
-    this.database.list('locationCaro').push(object).then((value)=>{
+     return this.database.list('items').push(object).then((value)=>{
+      console.log('hola')
       let coords = [object.l[0], object.l[1]]
-      // this.geo.setLocation(value.key,coords)
+      this.geo.setLocation(value.key,coords)
     })
   }
   getIndividualData(){

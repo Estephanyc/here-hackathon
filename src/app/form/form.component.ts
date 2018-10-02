@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MapService } from '../map.service';
+
 
 @Component({
   selector: 'app-form',
@@ -9,12 +12,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class FormComponent implements OnInit {
   dataForm: FormGroup;
+  form: boolean
+  addSuccessful: boolean
 
-  constructor(private firebaseService: FirebaseService, private formBuilder: FormBuilder) {
+  constructor(private firebaseService: FirebaseService, private formBuilder: FormBuilder, private MapService: MapService)
+   {
     this.createData();
    };
 
   ngOnInit() {
+    this.form = true
   }
 
   createData() {
@@ -22,29 +29,44 @@ export class FormComponent implements OnInit {
       name: ['', Validators.required],
       product: ['', Validators.required],
       category: ['', Validators.required],
-      description: ['', Validators.required],
-      adress: ['', Validators.required],
+      description: [''],
       phone: ['', Validators.required],
-      website: ['', Validators.required],
-      lat: ['', Validators.required],
-      long: ['', Validators.required],
+      website: [''],
+      location: ['', Validators.required],
     });
   }
 
   addData() {
-    let prueba = {
-      name: this.dataForm.value.name,
-      product: this.dataForm.value.product,
-      category: this.dataForm.value.category,
-      description: this.dataForm.value.description,
-      l: {
-        0: this.dataForm.value.lat,
-        1: this.dataForm.value.long,
-      },
-      phone: this.dataForm.value.phone,
-      website: this.dataForm.value.website,
+    // cambiar dirección a lat y lng
+    let geocodingParams = {
+      searchText: this.dataForm.value.location
     }
-    this.firebaseService.addData(prueba)
+    let platform = this.MapService.platformHere()
+    var geocoder = platform.getGeocodingService();
+
+    geocoder.geocode(geocodingParams, (value) =>{
+      let locations = value.Response.View[0].Result
+      let lat = locations[0].Location.DisplayPosition.Latitude
+      let lng = locations[0].Location.DisplayPosition.Longitude
+      let object = {
+        name: this.dataForm.value.name,
+        product: this.dataForm.value.product,
+        category: this.dataForm.value.category,
+        description: this.dataForm.value.description,
+        l: {
+          0: lat,
+          1: lng,
+        },
+        phone: this.dataForm.value.phone,
+        website: this.dataForm.value.website,
+      }
+    this.firebaseService.addData(object).then((value)=>{
+      this.dataForm.reset();
+      this.form = false;
+      console.log(this.addSuccessful)
+    })
+    }, function (e) {
+      alert(e)
+    });   
   }
 }
-

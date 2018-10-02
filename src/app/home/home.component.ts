@@ -6,10 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  list:boolean
+  map: Boolean
   constructor() { }
 
   ngOnInit() {
+    this.map = true
   }
-
+  activeList(){
+    console.log('jo')
+    this.list= false
+    this.map = true
+  }
+  activeMap(){
+    this.list = true
+    this.map = false
+  }
 }

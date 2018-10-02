@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+// import { MatBottomSheet, MatBottomSheetRef } from '@angular/material';
+
 import { MapService } from '../map.service';
 import { GeoService } from '../geoFire.service';
 
@@ -45,13 +47,13 @@ export class MapComponent implements OnInit {
   lat: any;
   lng: any;
   map: any;
-
   markers: any;
   subscription: any;
 
-    constructor(private geo: GeoService, private MapService: MapService) {
+  constructor(private geo: GeoService, private MapService: MapService) {
       this.platform = this.MapService.platformHere()
    }
+  
   ngOnInit() {
     // obtener la ubicacion actual
     if (navigator.geolocation) {
@@ -72,7 +74,7 @@ export class MapComponent implements OnInit {
   ngOnDestroy() {
     this.subscription.unsubscribe()
   }
-
+   
   // Mostrar el mapa desde mi ubicación actual
   setMapCenter() {
     let defaultLayers = this.platform.createDefaultLayers();
@@ -100,8 +102,9 @@ export class MapComponent implements OnInit {
       let marker = new H.map.Marker({ "lat": place.lat, "lng": place.lng },{
         icon: icon
       });
-      marker.setData("<p>" + place.title + "<br>");
+      marker.setData("hola");
       marker.addEventListener('tap', event => {
+        console.log(event)
         let bubble = new H.ui.InfoBubble(event.target.getPosition(), {
           content: event.target.getData()
         });
@@ -123,5 +126,7 @@ export class MapComponent implements OnInit {
       });
     this.map.addObject(marker);
   }
-  
+  /* showBottomSheet() {
+/    this.bottomSheet.open('BottomSheetExample');
+   } */
 }

@@ -11,7 +11,7 @@
         <p> Ingresa los siguientes datos, ¡Y futuros compradores podrán contactarte! </p>
     </div>
 </div>
-<form [formGroup]="dataForm" (ngSubmit)="addData()">
+<form [formGroup]="dataForm" (ngSubmit)="addData()" *ngIf="form">
     <div class="form-group">
         <input #name type="text" class="form-control" id="exampleFormControlInput1" placeholder="Tu nombre" formControlName="name">
     </div>
@@ -35,8 +35,8 @@
         <textarea #description class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
     </div>
     <div class="form-group">
-        <input #lat type="text" class="form-control" id="exampleFormControlInput1" placeholder="Latitud" formControlName="lat">
-        <input #long type="text" class="form-control" id="exampleFormControlInput1" placeholder="Longitud" formControlName="long">
+        <span>Número, Calle, Ciudad, Pais</span>
+        <input #location type="text" class="form-control" id="exampleFormControlInput1" placeholder="Dirección" formControlName="location">
     </div>
     <div class="form-group">
         <input #phone type="text" class="form-control" id="exampleFormControlInput1" placeholder="Teléfono" formControlName="phone">
@@ -46,3 +46,8 @@
     </div>
     <button type="submit" class="btn btn-danger">Publicar</button>
 </form>
+<div *ngIf="!form">
+    <h2 class="text-center p-5 text-danger">
+        Publicacion realizada con exito
+    </h2>
+</div>
