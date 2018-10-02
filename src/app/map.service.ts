@@ -13,10 +13,8 @@ export class MapService {
       'app_id': 'kJzLI3QUz7wY7HzWlvfn',
       'app_code': 'nCE14hAI-AFCRB472VQmCQ'
     });
-    console.log(this.platform)  
   }
   platformHere() {
-    console.log(this.platform)
     return this.platform
   }
 }

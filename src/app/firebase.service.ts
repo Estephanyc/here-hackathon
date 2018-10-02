@@ -15,7 +15,7 @@ export class FirebaseService {
       this.geo.setLocation(value.key,coords)
     })
   }
-  getIndividualData(){
-    // return this.database.object().valueChanges();
+  getIndividualData(key){
+    return this.database.object('items/'+ key).valueChanges();
   }
 }

@@ -1,3 +1,7 @@
 .cursor p {
     cursor: pointer;
 }
+
+.successfull {
+    font-size: 4rem;
+}

@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
     this.map = true
   }
   activeList(){
-    console.log('jo')
     this.list= false
     this.map = true
   }

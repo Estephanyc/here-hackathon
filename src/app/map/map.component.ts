@@ -3,6 +3,8 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 import { MapService } from '../map.service';
 import { GeoService } from '../geoFire.service';
+import { FirebaseService } from '../firebase.service';
+import * as firebase from 'firebase';
 
 declare var H: any;
 
@@ -16,31 +18,6 @@ export class MapComponent implements OnInit {
   private platform: any; 
   private ui: any;
 
-  placesExamples= [
-    {
-      title: 'nueces de la casa',
-      image: '../../assets/img/almonds.jpg',
-      lat: '-33.418131',
-      lng: '-70.608559'
-    },
-    {
-      title: 'nueces de la casa',
-      image: '../../assets/img/almonds.jpg',
-      lat: '-33.445704',
-      lng: '-70.649346'
-    },
-    {
-      title: 'nueces de la casa',
-      image: '../../assets/img/almonds.jpg',
-      lat: '-33.44007',
-      lng: '-70.65558'
-    },
-    {
-      title: 'nueces de la casa',
-      image: '../../assets/img/almonds.jpg',
-      lat: '-33.44276',
-      lng: '-70.65109'},
-  ]
   @ViewChild("map")
   public mapElement: ElementRef;
 
@@ -49,8 +26,9 @@ export class MapComponent implements OnInit {
   map: any;
   markers: any;
   subscription: any;
+  places: any = [];
 
-  constructor(private geo: GeoService, private MapService: MapService) {
+  constructor(private geo: GeoService, private MapService: MapService, private FirebaseService: FirebaseService) {
       this.platform = this.MapService.platformHere()
    }
   
@@ -64,12 +42,6 @@ export class MapComponent implements OnInit {
         this.setMapCenter();
       });
     }
-    this.subscription = this.geo.hits
-      .subscribe(hits => {
-        console.log(hits)
-        this.markers = hits
-      }
-      )
   }
   ngOnDestroy() {
     this.subscription.unsubscribe()
@@ -95,23 +67,37 @@ export class MapComponent implements OnInit {
  
   // Mostrar los marcadores en el mapa
   showPlaces() {
+    // quitar los puntos del mapa en cada consulta
     this.map.removeObjects(this.map.getObjects());
-    
-    this.placesExamples.forEach((place)=>{
-      let icon = new H.map.Icon('../../assets/img/marck-places.png');
-      let marker = new H.map.Marker({ "lat": place.lat, "lng": place.lng },{
-        icon: icon
-      });
-      marker.setData("hola");
-      marker.addEventListener('tap', event => {
-        console.log(event)
-        let bubble = new H.ui.InfoBubble(event.target.getPosition(), {
-          content: event.target.getData()
-        });
-        this.ui.addBubble(bubble);
-      }, false);
-      this.map.addObject(marker);
-    })
+
+    //suscripción a los puntos de acuerdo a la ubicación y radio
+      this.subscription = this.geo.hits
+      .subscribe(hits => {
+        //buscar informacion del lugar con su id
+        console.log(hits)
+        hits.map(element => {
+          this.FirebaseService.getIndividualData(element.key).subscribe((place:any)=>{
+            console.log(place)
+            // agregar este lugar a la lista para mostrar
+            this.places.push(place)
+
+            // marcar el punto en el mapa
+            let icon = new H.map.Icon('../../assets/img/marck-places.png');
+            let marker = new H.map.Marker({ "lat": place.l[0], "lng": place.l[1] }, {
+              icon: icon
+            });
+            marker.setData("hola");
+            marker.addEventListener('tap', event => {
+              console.log(event)
+              let bubble = new H.ui.InfoBubble(event.target.getPosition(), {
+                content: event.target.getData()
+              });
+              this.ui.addBubble(bubble);
+            }, false);
+            this.map.addObject(marker); 
+          })
+        })        
+      }
   }
   
   // marcar la ubicación actual
@@ -126,7 +112,4 @@ export class MapComponent implements OnInit {
       });
     this.map.addObject(marker);
   }
-  /* showBottomSheet() {
-/    this.bottomSheet.open('BottomSheetExample');
-   } */
 }

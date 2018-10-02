@@ -35,21 +35,6 @@ export class GeoService {
         this.hits.next(currentHits)
       })
   }
-  /* private seedDatabase() {
-    let dummyPoints = [
-      [-33.445704, -70.649346],
-      [-33.445704, -70.649346],
-      [-33.445704, -70.649346],
-      [-33.445704, -70.649346],
-      [-33.445704, -70.649346],
-    ]
-
-    dummyPoints.forEach((val, idx) => {
-      let name = `news-locations-${idx}`
-      console.log(idx)
-      this.setLocation(name, val)
-    })
-  } */
   setLocation(key: string, coords: Array<number>) {
     this.geoFire.set(key, coords)
       .then(_ => console.log('location updated'))
