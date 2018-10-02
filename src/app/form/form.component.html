@@ -1,3 +1,34 @@
-<p>
-  form works!
-</p>
+<form [formGroup]="postForm" (ngSubmit)="save()">
+  <div class="form-group">
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Tu nombre">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="¿Qué vendes?">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Selecciona una categoría</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>Alimentación</option>
+      <option>Hogar y decoración</option>
+      <option>Cuidado personal</option>
+      <option>Moda y accesorios</option>
+      <option>Muebles</option>
+      <option>Regalos</option>
+      <option>Infantil</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Cuéntanos brevemente sobre tu negocio</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Dirección">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Teléfono">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Sitio web">
+  </div>
+  <button type="submit" class="btn btn-primary">Publicar</button>
+</form>
