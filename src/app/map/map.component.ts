@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-
+import { MapService } from '../map.service';
 declare var H: any;
 
 @Component({
@@ -47,11 +47,8 @@ export class MapComponent implements OnInit {
   lng: any;
   map: any;
 
-  constructor() {
-    this.platform = new H.service.Platform({
-      'app_id': 'kJzLI3QUz7wY7HzWlvfn',
-      'app_code': 'nCE14hAI-AFCRB472VQmCQ'
-    });
+  constructor( private MapService: MapService) {
+    this.platform = MapService.platformHere();
    }
   ngOnInit() {
     // obtener la ubicacion actual
