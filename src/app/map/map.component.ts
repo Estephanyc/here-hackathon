@@ -96,7 +96,10 @@ export class MapComponent implements OnInit {
     this.map.removeObjects(this.map.getObjects());
     
     this.placesExamples.forEach((place)=>{
-      let marker = new H.map.Marker({ "lat": place.lat, "lng": place.lng });
+      let icon = new H.map.Icon('../../assets/img/marck-places.png');
+      let marker = new H.map.Marker({ "lat": place.lat, "lng": place.lng },{
+        icon: icon
+      });
       marker.setData("<p>" + place.title + "<br>");
       marker.addEventListener('tap', event => {
         let bubble = new H.ui.InfoBubble(event.target.getPosition(), {
