@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MapService } from '../map.service';
+import { GeoService } from '../geoFire.service';
+
 declare var H: any;
 
 @Component({
@@ -10,10 +12,7 @@ declare var H: any;
 export class MapComponent implements OnInit {
 
   private platform: any; 
-  public query: string;
   private ui: any;
-  private search: any;
-
 
   placesExamples= [
     {
@@ -47,8 +46,12 @@ export class MapComponent implements OnInit {
   lng: any;
   map: any;
 
-  constructor( private MapService: MapService) {
-    this.platform = MapService.platformHere();
+  markers: any;
+  subscription: any;
+
+    constructor(private geo: GeoService, private MapService: MapService) {
+      this.platform = MapService.platformHere();
+
    }
   ngOnInit() {
     // obtener la ubicacion actual
@@ -56,11 +59,19 @@ export class MapComponent implements OnInit {
       navigator.geolocation.getCurrentPosition((position) => {
         this.lat = position.coords.latitude;
         this.lng = position.coords.longitude;
+        this.geo.getLocations(10, [this.lat, this.lng])
         this.setMapCenter();
       });
     }
-    this.query = "starbucks";
-    this.search = new H.places.Search(this.platform.getPlacesService());
+    this.subscription = this.geo.hits
+      .subscribe(hits => {
+        console.log(hits)
+        this.markers = hits
+      }
+      )
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe()
   }
 
   // Mostrar el mapa desde mi ubicación actual
@@ -80,26 +91,22 @@ export class MapComponent implements OnInit {
     let behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
     this.ui = H.ui.UI.createDefault(this.map, defaultLayers);
   }
-  // Mostrar los lugares en el mapa
+ 
+  // Mostrar los marcadores en el mapa
   showPlaces() {
     this.map.removeObjects(this.map.getObjects());
-      for (let i = 0; i < this.placesExamples.length; i++) {
-        console.log(this.placesExamples[i])
-        this.dropMarker({ "lat": this.placesExamples[i].lat, "lng": this.placesExamples[i].lng }, this.placesExamples[i]);
-      }
-  }
-
-  // Mostrar los marcadores en el mapa
-  private dropMarker(coordinates: any, data: any) {
-    let marker = new H.map.Marker(coordinates);
-    marker.setData("<p>" + data.title + "<br>");
-    marker.addEventListener('tap', event => {
-      let bubble = new H.ui.InfoBubble(event.target.getPosition(), {
-        content: event.target.getData()
-      });
-      this.ui.addBubble(bubble);
-    }, false);
-    this.map.addObject(marker);
+    
+    this.placesExamples.forEach((place)=>{
+      let marker = new H.map.Marker({ "lat": place.lat, "lng": place.lng });
+      marker.setData("<p>" + place.title + "<br>");
+      marker.addEventListener('tap', event => {
+        let bubble = new H.ui.InfoBubble(event.target.getPosition(), {
+          content: event.target.getData()
+        });
+        this.ui.addBubble(bubble);
+      }, false);
+      this.map.addObject(marker);
+    })
   }
   
   // marcar la ubicación actual
@@ -114,4 +121,5 @@ export class MapComponent implements OnInit {
       });
     this.map.addObject(marker);
   }
+  
 }
