@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { RouterModule, Routes } from '@angular/router';
 
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire'; 
@@ -18,6 +18,19 @@ import { ModalDetailsComponent } from './modal-details/modal-details.component';
 import { InputSearchComponent } from './input-search/input-search.component';
 import { SplashComponent } from './splash/splash.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { HomeComponent } from './home/home.component';
+
+const appRoutes: Routes = [
+  {
+    path: 'add',
+    component: FormComponent,
+
+  },
+  {
+    path: '',
+    component: HomeComponent
+  }
+];
 
 @NgModule({
   declarations: [
@@ -28,9 +41,11 @@ import { CategoriesComponent } from './categories/categories.component';
     ModalDetailsComponent,
     InputSearchComponent,
     SplashComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    HomeComponent
   ],
   imports: [
+    RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),

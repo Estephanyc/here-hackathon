@@ -38,8 +38,8 @@ export class FormComponent implements OnInit {
       category: this.dataForm.value.category,
       description: this.dataForm.value.description,
       l: {
-        lat: this.dataForm.value.lat,
-        long: this.dataForm.value.long,
+        0: this.dataForm.value.lat,
+        1: this.dataForm.value.long,
       },
       phone: this.dataForm.value.phone,
       website: this.dataForm.value.website,

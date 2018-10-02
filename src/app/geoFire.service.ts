@@ -17,7 +17,6 @@ export class GeoService {
   constructor(private db: AngularFireDatabase) {
     this.dbRef = this.db.list('/locations');
     this.geoFire = new GeoFire(this.dbRef.query.ref);
-    this.seedDatabase()
    }
 
   getLocations(radius: number, coords: Array<number>) {
@@ -31,13 +30,12 @@ export class GeoService {
           distance: distance,
           key: key
         }
-
         let currentHits = this.hits.value
         currentHits.push(hit)
         this.hits.next(currentHits)
       })
   }
-  private seedDatabase() {
+  /* private seedDatabase() {
     let dummyPoints = [
       [-33.445704, -70.649346],
       [-33.445704, -70.649346],
@@ -51,7 +49,7 @@ export class GeoService {
       console.log(idx)
       this.setLocation(name, val)
     })
-  }
+  } */
   setLocation(key: string, coords: Array<number>) {
     this.geoFire.set(key, coords)
       .then(_ => console.log('location updated'))
