@@ -16,6 +16,6 @@ export class FirebaseService {
     })
   }
   getIndividualData(){
-    return this.database.object(path).valueChanges();
+    // return this.database.object().valueChanges();
   }
 }

@@ -50,8 +50,7 @@ export class MapComponent implements OnInit {
   subscription: any;
 
     constructor(private geo: GeoService, private MapService: MapService) {
-      this.platform = MapService.platformHere();
-
+      this.platform = this.MapService.platformHere()
    }
   ngOnInit() {
     // obtener la ubicacion actual
