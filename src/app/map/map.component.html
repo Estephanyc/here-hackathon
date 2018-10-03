@@ -1,21 +1,29 @@
 <div class="container">
     <div class="col-12 col-md-7 mx-auto">
         <app-header></app-header>
-        <div class="row d-block ">
-            <div class="col text-right ">
-                <button *ngIf="listActive " type="button " class="btn btn-lg buttom-list bg-white " (click)="activeMap() ">Mapa
-                    <i class="far fa-map "></i>
-                </button>
-                <button *ngIf="!listActive " type="button " class="btn btn-lg buttom-list bg-white " (click)="activeList() ">Lista
-                    <i class="fas fa-bars p-1 "></i>
-                </button>
-            </div>
-        </div>
-        <div [style.display]="listActive ? 'none':'block'">
-            <div #map style="width: 100%; height: 500px "></div>
-        </div>
-        <div *ngIf="listActive" class=" mt-5">
-            <app-list-places *ngFor="let item of places " [place]="item "></app-list-places>
-        </div>
+
+        <app-categories></app-categories>
     </div>
 </div>
+<!-- <div class="row">
+    <div class="col text-right ">
+        <button [style.display]="!listActive ? 'none':'block'" type="button " class="btn btn-lg buttom-list bg-white " (click)="activeMap() ">Mapa
+      <i class="far fa-map "></i>
+    </button>
+        <button [style.display]="listActive ? 'none':'block'" type=" button " class=" btn btn-lg buttom-list bg-white
+  " (click)=" activeList() ">Lista
+      <i class="fas fa-bars p-1 "></i>
+    </button>
+    </div>
+</div> -->
+<div [style.display]="listActive ? 'none':'block'" class="row">
+    <div #map style="width: 100%; height: 200px; "></div>
+</div>
+<div class="container">
+    <div class="col-12 col-md-7 mx-auto mt-5">
+        <app-list-places *ngFor="let item of places " [place]="item "></app-list-places>
+    </div>
+</div>
+
+
+<!-- *ngIf="listActive" -->

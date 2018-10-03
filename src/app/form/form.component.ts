@@ -14,6 +14,7 @@ export class FormComponent implements OnInit {
   dataForm: FormGroup;
   image: any;
   currentUploadProgress:number = -1;
+  imageOk : boolean = false
   form: boolean
   addSuccessful: boolean
 
@@ -79,7 +80,7 @@ export class FormComponent implements OnInit {
       let geocodingParams = {
         searchText: this.dataForm.value.location
       }
-
+      if (this.imageOk) {
       geocoder.geocode(geocodingParams, (value) => {
         let locations = value.Response.View[0].Result
         let lat = locations[0].Location.DisplayPosition.Latitude
@@ -97,15 +98,17 @@ export class FormComponent implements OnInit {
           website: this.dataForm.value.website,
           image: this.image
         }
-        this.firebaseService.addData(object).then((value) => {
-          this.dataForm.reset();
-          this.form = false;
-          console.log(this.addSuccessful)
-        })
+        
+          this.firebaseService.addData(object).then((value) => {
+            this.dataForm.reset();
+            this.form = false;
+            console.log(this.addSuccessful)
+          })
       }, function (e) {
         alert(e)
       })  
-    this.currentUploadProgress = -1;
+        this.currentUploadProgress = -1;
+    }
     }
   }
 
@@ -113,10 +116,19 @@ export class FormComponent implements OnInit {
     let task = this.storage.upload(event.target.files[0].name, event.target.files[0]);
     task.percentageChanges().subscribe((value) => {
       this.currentUploadProgress = value;
+      console.log(this.currentUploadProgress)
+      if (this.currentUploadProgress === 100) {
+        this.storage.ref(event.target.files[0].name).getDownloadURL().subscribe((downloadURLValue) => {
+          this.image = downloadURLValue;
+          this.imageOk = true
+          console.log('imagenn list')
+
+        })
+      }
     })
-    this.storage.ref(event.target.files[0].name).getDownloadURL().subscribe((downloadURLValue) => {
-      this.image = downloadURLValue;
-    })
+
+   
+   
   }
 
 }

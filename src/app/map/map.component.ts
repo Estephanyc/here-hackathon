@@ -52,7 +52,7 @@ export class MapComponent implements OnInit {
       this.mapElement.nativeElement,
       defaultLayers.normal.map,
       {
-        zoom: 18,
+        zoom: 12,
         center: { lat: self.lat, lng: self.lng }
       }
     );
@@ -94,7 +94,8 @@ export class MapComponent implements OnInit {
   
   // marcar la ubicación actual
   markerCurrentPosition(){
-    let icon = new H.map.Icon('../../assets/img/current-pos.png'),
+    console.log('marcar la actual')
+    let icon = new H.map.Icon('../../assets/img/current-location.png'),
       coords = {
         lat: this.lat,
         lng: this.lng
