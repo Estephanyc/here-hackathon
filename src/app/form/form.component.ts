@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-form',
@@ -9,8 +10,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class FormComponent implements OnInit {
   dataForm: FormGroup;
+  image: any;
+  currentUploadProgress:number = -1;
 
-  constructor(private firebaseService: FirebaseService, private formBuilder: FormBuilder) {
+  constructor(private firebaseService: FirebaseService, private formBuilder: FormBuilder, private storage: AngularFireStorage) {
     this.createData();
    };
 
@@ -28,6 +31,7 @@ export class FormComponent implements OnInit {
       website: ['', Validators.required],
       lat: ['', Validators.required],
       long: ['', Validators.required],
+      imageUpload: []
     });
   }
 
@@ -46,5 +50,16 @@ export class FormComponent implements OnInit {
     }
     this.firebaseService.addData(prueba)
   }
+
+  uploadFile(event) {
+    let task = this.storage.upload(event.target.files[0].name, event.target.files[0]);
+    task.percentageChanges().subscribe((value) => {
+      this.currentUploadProgress = value;
+    })
+    this.storage.ref(event.target.files[0].name).getDownloadURL().subscribe((downloadURLValue) => {
+      this.image = downloadURLValue;
+    })
+  }
+
 }
 

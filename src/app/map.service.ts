@@ -17,6 +17,7 @@ export class MapService {
   }
   ngOnInit() {
   }
+  
   platformHere() {
     console.log(this.platform)
     return this.platform
