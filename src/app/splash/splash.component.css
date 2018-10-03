@@ -1,46 +1,26 @@
 .bgStart{
-  background-image: url(/src/assets/img/backgroundsplash2.jpg);
+  background-image: url(../../assets/img/backgroundsplash2.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   height:100vh;
   overflow: hidden;
-  vertical-align: center;
 }
 .logo, .btn{
   text-align: center;
-  margin-top: 2em; 
+  margin-top: 3em; 
 }
 
 .logoinicio{
-  width: 50%;
+  width: 60%;
+  
+}
+.gif{
+  width: 10%;
 }
 
 @media (max-width: 600px) {
-  .logo{
-    margin-top: 7em;
+  .logoinicio{
+    margin-top: 5em;
   }
 }
 
-.btnEnter{
-  background-color: transparent;
-  border: none;
-  color: #DC3545;
-  font-weight:bolder;
-  cursor: pointer;
-  border-radius: 5px;
-  text-shadow: rgb(243, 243, 243) 0.1em 0.1em 0.2em;
-}
-.btnEnter:hover{
-  font-size: 1.2em;
-}
-.textEnter{
-  text-align: center;
-  background:rgba(58, 55, 55, 0.5);
-}
-.text{
-  padding-top: 1em;
-  color: white;
-  font-weight: 550;
-  padding-left: 1em;
-  padding-right: 1em;
-}
