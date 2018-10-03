@@ -49,6 +49,7 @@
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Sube una foto de tu producto</label>
     <input #imageUpload type="file" class="form-control" (change)="uploadFile($event)" formControlName="imageUpload">
+    <p *ngIf="currentUploadProgress > 0">{{currentUploadProgress}} </p>
   </div>
   <button type="submit" class="btn btn-danger">Publicar</button>
 </form>

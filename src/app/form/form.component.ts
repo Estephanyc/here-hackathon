@@ -36,6 +36,7 @@ export class FormComponent implements OnInit {
   }
 
   addData() {
+    if (this.currentUploadProgress < 0) {
     let prueba = {
       name: this.dataForm.value.name,
       product: this.dataForm.value.product,
@@ -49,6 +50,24 @@ export class FormComponent implements OnInit {
       website: this.dataForm.value.website,
     }
     this.firebaseService.addData(prueba)
+  }
+  if (this.currentUploadProgress == 100) {
+    let prueba = {
+      name: this.dataForm.value.name,
+      product: this.dataForm.value.product,
+      category: this.dataForm.value.category,
+      description: this.dataForm.value.description,
+      l: {
+        0: this.dataForm.value.lat,
+        1: this.dataForm.value.long,
+      },
+      phone: this.dataForm.value.phone,
+      website: this.dataForm.value.website,
+      image: this.image
+    }
+    this.firebaseService.addData(prueba)
+  }
+  this.currentUploadProgress = -1;
   }
 
   uploadFile(event) {
