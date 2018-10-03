@@ -24,6 +24,7 @@ import { ListPlacesComponent } from './list-places/list-places.component';
 import { Header2Component } from './header2/header2.component';
 import { PlaceDetailsComponent } from './place-details/place-details.component';
 
+
 const appRoutes: Routes = [
   {
     path: 'add',
@@ -31,9 +32,14 @@ const appRoutes: Routes = [
 
   },
   {
-    path: '',
+    path: 'map',
     component: MapComponent
   },
+  {
+    path: '',
+    component: SplashComponent,
+  },
+  
 ];
 
 @NgModule({
