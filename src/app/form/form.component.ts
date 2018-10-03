@@ -43,66 +43,70 @@ export class FormComponent implements OnInit {
     let platform = this.MapService.platformHere()
     var geocoder = platform.getGeocodingService();
 
-    if (this.currentUploadProgress < 0) {
-    let prueba = {
-      name: this.dataForm.value.name,
-      product: this.dataForm.value.product,
-      category: this.dataForm.value.category,
-      description: this.dataForm.value.description,
-      l: {
-        0: this.dataForm.value.lat,
-        1: this.dataForm.value.long,
-      },
-      phone: this.dataForm.value.phone,
-      website: this.dataForm.value.website,
-      
-    // cambiar dirección a lat y lng
-    let geocodingParams = {
-      searchText: this.dataForm.value.location
-    }
-   
-    geocoder.geocode(geocodingParams, (value) =>{
-      let locations = value.Response.View[0].Result
-      let lat = locations[0].Location.DisplayPosition.Latitude
-      let lng = locations[0].Location.DisplayPosition.Longitude
-      let object = {
-        name: this.dataForm.value.name,
-        product: this.dataForm.value.product,
-        category: this.dataForm.value.category,
-        description: this.dataForm.value.description,
-        l: {
-          0: lat,
-          1: lng,
-        },
-        phone: this.dataForm.value.phone,
-        website: this.dataForm.value.website,
+    if (this.currentUploadProgress < 0) { 
+      // cambiar dirección a lat y lng
+      let geocodingParams = {
+        searchText: this.dataForm.value.location
       }
-    this.firebaseService.addData(object).then((value)=>{
-      this.dataForm.reset();
-      this.form = false;
-      console.log(this.addSuccessful)
-    })
-    }, function (e) {
-      alert(e)
-    });   
-  }
-  if (this.currentUploadProgress == 100) {
-    let prueba = {
-      name: this.dataForm.value.name,
-      product: this.dataForm.value.product,
-      category: this.dataForm.value.category,
-      description: this.dataForm.value.description,
-      l: {
-        0: this.dataForm.value.lat,
-        1: this.dataForm.value.long,
-      },
-      phone: this.dataForm.value.phone,
-      website: this.dataForm.value.website,
-      image: this.image
+   
+      geocoder.geocode(geocodingParams, (value) =>{
+        let locations = value.Response.View[0].Result
+        let lat = locations[0].Location.DisplayPosition.Latitude
+        let lng = locations[0].Location.DisplayPosition.Longitude
+        let object = {
+          name: this.dataForm.value.name,
+          product: this.dataForm.value.product,
+          category: this.dataForm.value.category,
+          description: this.dataForm.value.description,
+          l: {
+            0: lat,
+            1: lng,
+          },
+          phone: this.dataForm.value.phone,
+          website: this.dataForm.value.website,
+        }
+        this.firebaseService.addData(object).then((value)=>{
+          this.dataForm.reset();
+          this.form = false;
+          console.log(this.addSuccessful)
+        })
+      }, function (e) {
+        alert(e)
+      })   
     }
-    this.firebaseService.addData(prueba)
-  }
-  this.currentUploadProgress = -1;
+    if (this.currentUploadProgress == 100) {
+      // cambiar dirección a lat y lng
+      let geocodingParams = {
+        searchText: this.dataForm.value.location
+      }
+
+      geocoder.geocode(geocodingParams, (value) => {
+        let locations = value.Response.View[0].Result
+        let lat = locations[0].Location.DisplayPosition.Latitude
+        let lng = locations[0].Location.DisplayPosition.Longitude
+        let object = {
+          name: this.dataForm.value.name,
+          product: this.dataForm.value.product,
+          category: this.dataForm.value.category,
+          description: this.dataForm.value.description,
+          l: {
+            0: lat,
+            1: lng,
+          },
+          phone: this.dataForm.value.phone,
+          website: this.dataForm.value.website,
+          image: this.image
+        }
+        this.firebaseService.addData(object).then((value) => {
+          this.dataForm.reset();
+          this.form = false;
+          console.log(this.addSuccessful)
+        })
+      }, function (e) {
+        alert(e)
+      })  
+    this.currentUploadProgress = -1;
+    }
   }
 
   uploadFile(event) {

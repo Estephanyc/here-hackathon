@@ -1,10 +1,10 @@
-<div class="row">
-    <div class="bg-white shadow-sm p-4  mb-2 row">
-        <div class="col-3">
-            <img src="../../assets/img/almonds.jpg" class="rounded-circle shadow img-fluid" />
-        </div>
-        <div class="col-9">
-            <h3>{{place.name}}</h3>
-        </div>
+<div class="bg-white shadow p-4  mb-2 row">
+    <div class="col-4">
+        <img src="{{place.image}}" class=" shadow img-fluid" />
+    </div>
+    <div class="col-8">
+        <h3>{{place.product}}</h3>
+        <p>Estas a {{place.distance}} km</p>
+        <span class="bg-danger rounded p-1 text-white">{{place.category}}</span>
     </div>
 </div>

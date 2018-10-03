@@ -71,7 +71,9 @@ export class MapComponent implements OnInit {
     this.geo.getLocations(10, [this.lat, this.lng])
     .on('key_entered', (key, location, distance) => {
       this.FirebaseService.getIndividualData(key).subscribe((place:any)=>{
+        place['distance'] = Math.trunc(distance); 
         this.places.push(place)
+        console.log(place)
         // marcar el punto en el mapa
         let icon = new H.map.Icon('../../assets/img/marck-places.png');
         let marker = new H.map.Marker({ "lat": place.l[0], "lng": place.l[1] }, {

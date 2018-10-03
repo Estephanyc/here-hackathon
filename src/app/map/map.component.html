@@ -8,6 +8,6 @@
 <div [style.display]="listActive ? 'none':'block'">
     <div #map style="width: 100%; height: 500px "></div>
 </div>
-<div *ngIf="listActive">
+<div *ngIf="listActive" class=" mt-5">
     <app-list-places *ngFor="let item of places " [place]="item "></app-list-places>
 </div>
