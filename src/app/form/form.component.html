@@ -17,10 +17,10 @@
             </div>
             <form [formGroup]="dataForm" (ngSubmit)="addData()">
                 <div class="form-group">
-                    <input #name type="text" class="form-control" id="exampleFormControlInput1" placeholder="Tu nombre o marca comercial" formControlName="name">
+                    <input #name type="text" class="form-control" id="exampleFormControlInput1" placeholder="Tu nombre o marca comercial *" formControlName="name">
                 </div>
                 <div class="form-group">
-                    <input #product type="text" class="form-control" id="exampleFormControlInput1" placeholder="¿Qué vendes?" formControlName="product">
+                    <input #product type="text" class="form-control" id="exampleFormControlInput1" placeholder="¿Qué vendes? *" formControlName="product">
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Selecciona una categoría</label>
@@ -34,7 +34,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <span>Número, Calle, Ciudad, Pais</span>
+                    <span>Número, Calle, Ciudad, País *</span>
                     <input #location type="text" class="form-control" id="exampleFormControlInput1" placeholder="Dirección" formControlName="location">
                 </div>
                 <div class="form-group">
