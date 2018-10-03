@@ -65,6 +65,7 @@ export class FormComponent implements OnInit {
           },
           phone: this.dataForm.value.phone,
           website: this.dataForm.value.website,
+          adress: this.dataForm.value.location
         }
         this.firebaseService.addData(object).then((value)=>{
           this.dataForm.reset();
@@ -96,7 +97,8 @@ export class FormComponent implements OnInit {
           },
           phone: this.dataForm.value.phone,
           website: this.dataForm.value.website,
-          image: this.image
+          image: this.image,
+          adress: this.dataForm.value.location
         }
         
           this.firebaseService.addData(object).then((value) => {

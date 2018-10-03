@@ -1,39 +1,27 @@
-.bgStart{
-  background-image: url(../../assets/img/backgroundsplash2.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  height:100vh;
-  overflow: hidden;
-}
-.logo, .btn{
-  text-align: center;
-  margin-top: 3em; 
+.bgStart {
+    background-image: url(../../assets/img/backgroundsplash2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    overflow: hidden;
 }
 
-.logoinicio{
-  width: 60%;
-  
+.logo,
+.btn {
+    text-align: center;
+    margin-top: 3em;
 }
-.gif{
-  width: 10%;
+
+.logoinicio {
+    width: 60%;
+}
+
+.gif {
+    width: 10%;
 }
 
 @media (max-width: 600px) {
-  .logoinicio{
-    margin-top: 5em;
-  }
+    .logoinicio {
+        margin-top: 5em;
+    }
 }
-
-
-    text-align: center;
-    background: rgba(58, 55, 55, 0.5);
-}
-
-.text {
-    padding-top: 1em;
-    color: white;
-    font-weight: 550;
-    padding-left: 1em;
-    padding-right: 1em;
-}
-

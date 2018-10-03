@@ -6,7 +6,7 @@
                 <img class="img-fluid" src="../../assets/img/logopequeño.png" alt="">
             </div>
             <div class="col-9 text-right">
-                <img class="cursor-p" routerLink="" src="../../assets/img/volver.png" alt="" width="40">
+                <img class="cursor-p" routerLink="/map" src="../../assets/img/volver.png" alt="" width="40">
             </div>
         </div>
         <div *ngIf="form">
@@ -55,6 +55,9 @@
                 <button type="submit" class="btn btn-danger">Publicar</button>
             </form>
 
+        </div>
+        <div *ngIf="!form" class="col mx-auto p-5">
+            <h1 class="text-danger text-center">Publicación realizada con éxito</h1>
         </div>
     </div>
 </div>

@@ -5,6 +5,30 @@
     <div class="col-8">
         <p>{{place.product}}</p>
         <p>Estas a {{place.distance}} km</p>
-        <span class="bg-danger rounded p-1 text-white">{{place.category}}</span>
+        <span class="btn-light text-dark rounded p-1 text-white border">{{place.category}}</span>
+        <button type="button" class="btn  btn-sm btn-danger d-block mt-2" data-toggle="modal" data-target=".modal">+ info</button>
+
+        <div class="modal fade " tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog ">
+                <div class="modal-content p-4 ">
+                    <h3 class="text-center">{{place.name}}</h3>
+                    <div class="row data-place">
+                        <div class="col-4">
+                            <img src="{{place.image}}" class="shadow rounded-circle img-fluid" />
+                        </div>
+                        <div class="col-8">
+                            <p>{{place.name}}</p>
+                            <p><i class="fas fa-phone p-1 text-danger"></i>{{place.phone}}</p>
+                            <span class="bg-danger rounded p-1 text-white border">{{place.category}}</span>
+                        </div>
+                    </div>
+                    <div class="text-center pt-2">
+                        <p><i class="fas fa-map-marker-alt p-1 text-danger"></i>Puma 1180, Santiago, Chile</p>
+                        <p>{{place.description}}</p>
+                        <p>{{place.website}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
