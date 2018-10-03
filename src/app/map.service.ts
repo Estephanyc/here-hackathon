@@ -11,9 +11,11 @@ export class MapService {
   constructor() { 
     this.platform = new H.service.Platform({
       'app_id': 'kJzLI3QUz7wY7HzWlvfn',
-      'app_code': 'nCE14hAI-AFCRB472VQmCQ'
+      'app_code': 'nCE14hAI-AFCRB472VQmCQ',
+      useHTTPS: true
     });
   }
+  
   platformHere() {
     return this.platform
   }

@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire'; 
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
@@ -19,7 +20,6 @@ import { ModalDetailsComponent } from './modal-details/modal-details.component';
 import { InputSearchComponent } from './input-search/input-search.component';
 import { SplashComponent } from './splash/splash.component';
 import { CategoriesComponent } from './categories/categories.component';
-import { HomeComponent } from './home/home.component';
 import { ListPlacesComponent } from './list-places/list-places.component';
 import { Header2Component } from './header2/header2.component';
 import { PlaceDetailsComponent } from './place-details/place-details.component';
@@ -32,8 +32,8 @@ const appRoutes: Routes = [
 
   },
   {
-    path: 'home',
-    component: HomeComponent
+    path: 'map',
+    component: MapComponent
   },
   {
     path: '',
@@ -52,7 +52,6 @@ const appRoutes: Routes = [
     InputSearchComponent,
     SplashComponent,
     CategoriesComponent,
-    HomeComponent,
     ListPlacesComponent,
     Header2Component,
     PlaceDetailsComponent,
@@ -64,7 +63,8 @@ const appRoutes: Routes = [
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireStorageModule
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]
