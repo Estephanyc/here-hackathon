@@ -14,13 +14,9 @@ export class MapService {
       'app_code': 'nCE14hAI-AFCRB472VQmCQ',
       useHTTPS: true
     });
-    console.log(this.platform)
-  }
-  ngOnInit() {
   }
   
   platformHere() {
-    console.log(this.platform)
     return this.platform
   }
 }

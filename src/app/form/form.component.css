@@ -1,3 +1,20 @@
 .cursor p {
     cursor: pointer;
 }
+
+.successful {
+  font-size: 4rem;
+}
+
+input, textarea, select {
+  background-color: rgb(210, 219, 219);
+}
+
+::placeholder { 
+  color: rgba(0, 0, 0, 0.575);
+  opacity: 9; 
+}
+/* 
+input[type=file] { 
+ display:none; 
+} */
