@@ -1,43 +1,30 @@
-.bgStart {
-    background-image: url("../../assets/img/backgroundsplash2.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
-    overflow: hidden;
-    vertical-align: center;
+.bgStart{
+  background-image: url(../../assets/img/backgroundsplash2.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height:100vh;
+  overflow: hidden;
+}
+.logo, .btn{
+  text-align: center;
+  margin-top: 3em; 
 }
 
-.logo,
-.btn {
-    text-align: center;
-    margin-top: 2em;
+.logoinicio{
+  width: 60%;
+  
 }
-
-.logoinicio {
-    width: 50%;
+.gif{
+  width: 10%;
 }
 
 @media (max-width: 600px) {
-    .logo {
-        margin-top: 7em;
-    }
+  .logoinicio{
+    margin-top: 5em;
+  }
 }
 
-.btnEnter {
-    background-color: transparent;
-    border: none;
-    color: #DC3545;
-    font-weight: bolder;
-    cursor: pointer;
-    border-radius: 5px;
-    text-shadow: rgb(243, 243, 243) 0.1em 0.1em 0.2em;
-}
 
-.btnEnter:hover {
-    font-size: 1.2em;
-}
-
-.textEnter {
     text-align: center;
     background: rgba(58, 55, 55, 0.5);
 }
@@ -49,3 +36,4 @@
     padding-left: 1em;
     padding-right: 1em;
 }
+
