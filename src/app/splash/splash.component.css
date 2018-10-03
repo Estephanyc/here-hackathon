@@ -24,3 +24,16 @@
   }
 }
 
+
+    text-align: center;
+    background: rgba(58, 55, 55, 0.5);
+}
+
+.text {
+    padding-top: 1em;
+    color: white;
+    font-weight: 550;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+

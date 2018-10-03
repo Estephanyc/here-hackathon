@@ -3,3 +3,44 @@
     bottom: 10px;
     z-index: 10;
 }
+
+.cat-cont i {
+    font-size: 1.2rem;
+    padding: 5px;
+    color: white;
+}
+
+.cat-cont p {
+    font-size: .8rem
+}
+
+.cat {
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.alimentacion {
+    background-color: #D67582
+}
+
+.hogar {
+    background-color: #7A82AB
+}
+
+.personal {
+    background-color: #FBB7C0
+}
+
+.moda {
+    background-color: #03CEA4
+}
+
+.muebles {
+    background-color: #8A7090
+}
+
+.regalos {
+    background-color: #F4D35E
+}
