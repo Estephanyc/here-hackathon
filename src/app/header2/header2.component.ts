@@ -11,5 +11,8 @@ export class Header2Component implements OnInit {
 
   ngOnInit() {
   }
-
+  reload() {
+    console.log('kj')
+    window.location.reload();
+  }
 }
