@@ -7,11 +7,11 @@
 }
 
 input, textarea, select {
-  background-color: rgb(210, 219, 219);
+  background-color: #f2f2f2;
 }
 
 ::placeholder { 
-  color: rgba(0, 0, 0, 0.575);
+  color: rgba(0, 0, 0, 0.664);
   opacity: 9; 
 }
 /* 
