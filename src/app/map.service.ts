@@ -14,6 +14,7 @@ export class MapService {
       'app_code': 'nCE14hAI-AFCRB472VQmCQ'
     });
   }
+  
   platformHere() {
     return this.platform
   }
