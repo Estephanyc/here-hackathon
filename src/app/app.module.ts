@@ -20,11 +20,9 @@ import { ModalDetailsComponent } from './modal-details/modal-details.component';
 import { InputSearchComponent } from './input-search/input-search.component';
 import { SplashComponent } from './splash/splash.component';
 import { CategoriesComponent } from './categories/categories.component';
-import { HomeComponent } from './home/home.component';
 import { ListPlacesComponent } from './list-places/list-places.component';
 import { Header2Component } from './header2/header2.component';
 import { PlaceDetailsComponent } from './place-details/place-details.component';
-import { AddSuccessfulComponent } from './add-successful/add-successful.component';
 
 const appRoutes: Routes = [
   {
@@ -34,7 +32,7 @@ const appRoutes: Routes = [
   },
   {
     path: '',
-    component: HomeComponent
+    component: MapComponent
   },
 ];
 
@@ -48,11 +46,9 @@ const appRoutes: Routes = [
     InputSearchComponent,
     SplashComponent,
     CategoriesComponent,
-    HomeComponent,
     ListPlacesComponent,
     Header2Component,
     PlaceDetailsComponent,
-    AddSuccessfulComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

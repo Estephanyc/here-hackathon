@@ -28,6 +28,7 @@ export class MapComponent implements OnInit {
   subscription: any;
   places: any = [];
   locations: any =[]
+  listActive: boolean = false
 
   constructor(private geo: GeoService, private MapService: MapService, private FirebaseService: FirebaseService) {
       this.platform = this.MapService.platformHere()
@@ -70,7 +71,7 @@ export class MapComponent implements OnInit {
     this.geo.getLocations(10, [this.lat, this.lng])
     .on('key_entered', (key, location, distance) => {
       this.FirebaseService.getIndividualData(key).subscribe((place:any)=>{
-
+        this.places.push(place)
         // marcar el punto en el mapa
         let icon = new H.map.Icon('../../assets/img/marck-places.png');
         let marker = new H.map.Marker({ "lat": place.l[0], "lng": place.l[1] }, {
@@ -100,5 +101,12 @@ export class MapComponent implements OnInit {
         icon: icon
       });
     this.map.addObject(marker);
+  }
+  activeList() {
+    this.listActive = true
+  }
+  activeMap() {
+    console.log('activar mapa')
+    this.listActive = false
   }
 }

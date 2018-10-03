@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input} from '@angular/core';
 
 @Component({
   selector: 'app-list-places',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-places.component.css']
 })
 export class ListPlacesComponent implements OnInit {
-
+  @Input() place
   constructor() { }
 
   ngOnInit() {
