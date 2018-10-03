@@ -23,7 +23,7 @@ import { HomeComponent } from './home/home.component';
 import { ListPlacesComponent } from './list-places/list-places.component';
 import { Header2Component } from './header2/header2.component';
 import { PlaceDetailsComponent } from './place-details/place-details.component';
-import { AddSuccessfulComponent } from './add-successful/add-successful.component';
+
 
 const appRoutes: Routes = [
   {
@@ -32,9 +32,14 @@ const appRoutes: Routes = [
 
   },
   {
-    path: '',
+    path: 'home',
     component: HomeComponent
   },
+  {
+    path: '',
+    component: SplashComponent,
+  },
+  
 ];
 
 @NgModule({
@@ -51,7 +56,6 @@ const appRoutes: Routes = [
     ListPlacesComponent,
     Header2Component,
     PlaceDetailsComponent,
-    AddSuccessfulComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

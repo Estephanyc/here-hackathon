@@ -1,55 +1,59 @@
-<div class="row mt-4">
-    <div class="col-3">
-        <img class="img-fluid" src="../../assets/img/logopequeño.png" alt="">
-    </div>
-    <div class="col-9 text-right">
-        <img class="cursor-p" routerLink="" src="../../assets/img/volver.png" alt="" width="40">
-    </div>
-</div>
-<div *ngIf="form">
-    <div class="row">
-        <div class="col text-center p-3">
-            <p> Ingresa los siguientes datos, ¡Y futuros compradores podrán contactarte! </p>
+<div class="container">
+    <div class="col-12 col-md-7 mx-auto">
+        <div class="row mt-4">
+            <div class="col-3">
+                <img class="img-fluid" src="../../assets/img/logopequeño.png" alt="">
+            </div>
+            <div class="col-9 text-right">
+                <img class="cursor-p" routerLink="/home" src="../../assets/img/volver.png" alt="" width="40">
+            </div>
+        </div>
+        <div *ngIf="form">
+            <div class="row">
+                <div class="col text-center p-3">
+                    <p> Ingresa los siguientes datos, ¡Y futuros compradores podrán contactarte! </p>
+                </div>
+            </div>
+            <form [formGroup]="dataForm" (ngSubmit)="addData()">
+                <div class="form-group">
+                    <input #name type="text" class="form-control" id="exampleFormControlInput1" placeholder="Tu nombre" formControlName="name">
+                </div>
+                <div class="form-group">
+                    <input #product type="text" class="form-control" id="exampleFormControlInput1" placeholder="¿Qué vendes?" formControlName="product">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Selecciona una categoría</label>
+                    <select #category class="form-control" id="exampleFormControlSelect1" formControlName="category">
+                        <option>Alimentación</option>
+                        <option>Hogar y decoración</option>
+                        <option>Cuidado personal</option>
+                        <option>Moda y accesorios</option>
+                        <option>Muebles</option>
+                        <option>Regalos</option>
+                        <option>Infantil</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Cuéntanos brevemente sobre tu negocio</label>
+                    <textarea #description class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <span>Número, Calle, Ciudad, Pais</span>
+                    <input #location type="text" class="form-control" id="exampleFormControlInput1" placeholder="Dirección" formControlName="location">
+                </div>
+                <div class="form-group">
+                    <input #phone type="text" class="form-control" id="exampleFormControlInput1" placeholder="Teléfono" formControlName="phone">
+                </div>
+                <div class="form-group">
+                    <input #website type="text" class="form-control" id="exampleFormControlInput1" placeholder="Sitio web" formControlName="website">
+                </div>
+                <button type="submit" class="btn btn-danger">Publicar</button>
+            </form>
+        </div>
+        <div *ngIf="!form">
+            <h2 class="text-center p-5 text-danger successful">
+                Publicación realizada con exito!
+            </h2>
         </div>
     </div>
-    <form [formGroup]="dataForm" (ngSubmit)="addData()">
-        <div class="form-group">
-            <input #name type="text" class="form-control" id="exampleFormControlInput1" placeholder="Tu nombre" formControlName="name">
-        </div>
-        <div class="form-group">
-            <input #product type="text" class="form-control" id="exampleFormControlInput1" placeholder="¿Qué vendes?" formControlName="product">
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlSelect1">Selecciona una categoría</label>
-            <select #category class="form-control" id="exampleFormControlSelect1" formControlName="category">
-      <option>Alimentación</option>
-      <option>Hogar y decoración</option>
-      <option>Cuidado personal</option>
-      <option>Moda y accesorios</option>
-      <option>Muebles</option>
-      <option>Regalos</option>
-      <option>Infantil</option>
-    </select>
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1">Cuéntanos brevemente sobre tu negocio</label>
-            <textarea #description class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
-        </div>
-        <div class="form-group">
-            <span>Número, Calle, Ciudad, Pais</span>
-            <input #location type="text" class="form-control" id="exampleFormControlInput1" placeholder="Dirección" formControlName="location">
-        </div>
-        <div class="form-group">
-            <input #phone type="text" class="form-control" id="exampleFormControlInput1" placeholder="Teléfono" formControlName="phone">
-        </div>
-        <div class="form-group">
-            <input #website type="text" class="form-control" id="exampleFormControlInput1" placeholder="Sitio web" formControlName="website">
-        </div>
-        <button type="submit" class="btn btn-danger">Publicar</button>
-    </form>
-</div>
-<div *ngIf="!form">
-    <h2 class="text-center p-5 text-danger successful">
-        Publicación realizada con exito!
-    </h2>
 </div>
