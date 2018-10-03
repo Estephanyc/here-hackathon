@@ -27,6 +27,7 @@ export class MapComponent implements OnInit {
   markers: any;
   subscription: any;
   places: any = [];
+  locations: any =[]
 
   constructor(private geo: GeoService, private MapService: MapService, private FirebaseService: FirebaseService) {
       this.platform = this.MapService.platformHere()
@@ -38,16 +39,11 @@ export class MapComponent implements OnInit {
       navigator.geolocation.getCurrentPosition((position) => {
         this.lat = position.coords.latitude;
         this.lng = position.coords.longitude;
-        this.geo.getLocations(10, [this.lat, this.lng])
         this.setMapCenter();
       });
     }
   }
-  ngOnDestroy() {
-    this.subscription.unsubscribe()
-  }
-   
-  // Mostrar el mapa desde mi ubicación actual
+   // Mostrar el mapa desde mi ubicación actual
   setMapCenter() {
     let defaultLayers = this.platform.createDefaultLayers();
     const self = this;
@@ -70,34 +66,27 @@ export class MapComponent implements OnInit {
     // quitar los puntos del mapa en cada consulta
     this.map.removeObjects(this.map.getObjects());
 
-    //suscripción a los puntos de acuerdo a la ubicación y radio
-      this.subscription = this.geo.hits
-      .subscribe(hits => {
-        //buscar informacion del lugar con su id
-        console.log(hits)
-        hits.map(element => {
-          this.FirebaseService.getIndividualData(element.key).subscribe((place:any)=>{
-            console.log(place)
-            // agregar este lugar a la lista para mostrar
-            this.places.push(place)
+    //get locations con geofire
+    this.geo.getLocations(10, [this.lat, this.lng])
+    .on('key_entered', (key, location, distance) => {
+      this.FirebaseService.getIndividualData(key).subscribe((place:any)=>{
 
-            // marcar el punto en el mapa
-            let icon = new H.map.Icon('../../assets/img/marck-places.png');
-            let marker = new H.map.Marker({ "lat": place.l[0], "lng": place.l[1] }, {
-              icon: icon
-            });
-            marker.setData("hola");
-            marker.addEventListener('tap', event => {
-              console.log(event)
-              let bubble = new H.ui.InfoBubble(event.target.getPosition(), {
-                content: event.target.getData()
-              });
-              this.ui.addBubble(bubble);
-            }, false);
-            this.map.addObject(marker); 
-          })
-        })        
-      }
+        // marcar el punto en el mapa
+        let icon = new H.map.Icon('../../assets/img/marck-places.png');
+        let marker = new H.map.Marker({ "lat": place.l[0], "lng": place.l[1] }, {
+          icon: icon
+        });
+        marker.setData("hola");
+        marker.addEventListener('tap', event => {
+          console.log(event)
+          let bubble = new H.ui.InfoBubble(event.target.getPosition(), {
+            content: event.target.getData()
+          });
+          this.ui.addBubble(bubble);
+        }, false);
+        this.map.addObject(marker); 
+      })       
+    })
   }
   
   // marcar la ubicación actual
