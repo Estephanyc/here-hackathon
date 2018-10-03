@@ -1,2 +1,11 @@
 <app-header></app-header>
-<app-map></app-map>
+<div class="row">
+    <div class="col text-right">
+        <button *ngIf="list" type="button" class="btn btn-lg buttom-list bg-white" (click)="activeList()">Mapa <i class="far fa-map"></i></button>
+        <button *ngIf="map" type="button" class="btn btn-lg buttom-list bg-white" (click)="activeMap()">Lista <i
+    class="fas fa-bars p-1"></i></button>
+    </div>
+</div>
+
+<app-map *ngIf="map"></app-map>
+<app-list-places *ngIf="list"></app-list-places>

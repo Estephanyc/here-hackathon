@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+// import { MatBottomSheet, MatBottomSheetRef } from '@angular/material';
+
 import { MapService } from '../map.service';
 import { GeoService } from '../geoFire.service';
+import { FirebaseService } from '../firebase.service';
+import * as firebase from 'firebase';
 
 declare var H: any;
 
@@ -14,66 +18,32 @@ export class MapComponent implements OnInit {
   private platform: any; 
   private ui: any;
 
-  placesExamples= [
-    {
-      title: 'nueces de la casa',
-      image: '../../assets/img/almonds.jpg',
-      lat: '-33.418131',
-      lng: '-70.608559'
-    },
-    {
-      title: 'nueces de la casa',
-      image: '../../assets/img/almonds.jpg',
-      lat: '-33.445704',
-      lng: '-70.649346'
-    },
-    {
-      title: 'nueces de la casa',
-      image: '../../assets/img/almonds.jpg',
-      lat: '-33.44007',
-      lng: '-70.65558'
-    },
-    {
-      title: 'nueces de la casa',
-      image: '../../assets/img/almonds.jpg',
-      lat: '-33.44276',
-      lng: '-70.65109'},
-  ]
   @ViewChild("map")
   public mapElement: ElementRef;
 
   lat: any;
   lng: any;
   map: any;
-
   markers: any;
   subscription: any;
+  places: any = [];
+  locations: any =[]
 
-    constructor(private geo: GeoService, private MapService: MapService) {
+  constructor(private geo: GeoService, private MapService: MapService, private FirebaseService: FirebaseService) {
       this.platform = this.MapService.platformHere()
    }
+  
   ngOnInit() {
     // obtener la ubicacion actual
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         this.lat = position.coords.latitude;
         this.lng = position.coords.longitude;
-        this.geo.getLocations(10, [this.lat, this.lng])
         this.setMapCenter();
       });
     }
-    this.subscription = this.geo.hits
-      .subscribe(hits => {
-        console.log(hits)
-        this.markers = hits
-      }
-      )
   }
-  ngOnDestroy() {
-    this.subscription.unsubscribe()
-  }
-
-  // Mostrar el mapa desde mi ubicación actual
+   // Mostrar el mapa desde mi ubicación actual
   setMapCenter() {
     let defaultLayers = this.platform.createDefaultLayers();
     const self = this;
@@ -93,21 +63,29 @@ export class MapComponent implements OnInit {
  
   // Mostrar los marcadores en el mapa
   showPlaces() {
+    // quitar los puntos del mapa en cada consulta
     this.map.removeObjects(this.map.getObjects());
-    
-    this.placesExamples.forEach((place)=>{
-      let icon = new H.map.Icon('../../assets/img/marck-places.png');
-      let marker = new H.map.Marker({ "lat": place.lat, "lng": place.lng },{
-        icon: icon
-      });
-      marker.setData("<p>" + place.title + "<br>");
-      marker.addEventListener('tap', event => {
-        let bubble = new H.ui.InfoBubble(event.target.getPosition(), {
-          content: event.target.getData()
+
+    //get locations con geofire
+    this.geo.getLocations(10, [this.lat, this.lng])
+    .on('key_entered', (key, location, distance) => {
+      this.FirebaseService.getIndividualData(key).subscribe((place:any)=>{
+
+        // marcar el punto en el mapa
+        let icon = new H.map.Icon('../../assets/img/marck-places.png');
+        let marker = new H.map.Marker({ "lat": place.l[0], "lng": place.l[1] }, {
+          icon: icon
         });
-        this.ui.addBubble(bubble);
-      }, false);
-      this.map.addObject(marker);
+        marker.setData("hola");
+        marker.addEventListener('tap', event => {
+          console.log(event)
+          let bubble = new H.ui.InfoBubble(event.target.getPosition(), {
+            content: event.target.getData()
+          });
+          this.ui.addBubble(bubble);
+        }, false);
+        this.map.addObject(marker); 
+      })       
     })
   }
   
@@ -123,5 +101,4 @@ export class MapComponent implements OnInit {
       });
     this.map.addObject(marker);
   }
-  
 }

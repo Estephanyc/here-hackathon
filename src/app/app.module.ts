@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { HttpClientModule } from '@angular/common/http';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire'; 
 import { AngularFireStorageModule } from '@angular/fire/storage';
@@ -20,6 +21,10 @@ import { InputSearchComponent } from './input-search/input-search.component';
 import { SplashComponent } from './splash/splash.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { HomeComponent } from './home/home.component';
+import { ListPlacesComponent } from './list-places/list-places.component';
+import { Header2Component } from './header2/header2.component';
+import { PlaceDetailsComponent } from './place-details/place-details.component';
+import { AddSuccessfulComponent } from './add-successful/add-successful.component';
 
 const appRoutes: Routes = [
   {
@@ -30,7 +35,7 @@ const appRoutes: Routes = [
   {
     path: '',
     component: HomeComponent
-  }
+  },
 ];
 
 @NgModule({
@@ -43,11 +48,16 @@ const appRoutes: Routes = [
     InputSearchComponent,
     SplashComponent,
     CategoriesComponent,
-    HomeComponent
+    HomeComponent,
+    ListPlacesComponent,
+    Header2Component,
+    PlaceDetailsComponent,
+    AddSuccessfulComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
