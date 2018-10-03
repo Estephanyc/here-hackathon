@@ -3,5 +3,18 @@
 }
 
 .successful {
-    font-size: 4rem;
+  font-size: 4rem;
 }
+
+.mx-auto {
+  background-color: #ece9e962;
+}
+
+::placeholder { 
+  color: rgba(0, 0, 0, 0.664);
+  opacity: 9; 
+}
+ 
+input[type=file] { 
+ cursor: pointer; 
+} 

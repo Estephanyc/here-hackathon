@@ -17,10 +17,10 @@
             </div>
             <form [formGroup]="dataForm" (ngSubmit)="addData()">
                 <div class="form-group">
-                    <input #name type="text" class="form-control" id="exampleFormControlInput1" placeholder="Tu nombre" formControlName="name">
+                    <input #name type="text" class="form-control" id="exampleFormControlInput1" placeholder="Tu nombre o marca comercial *" formControlName="name">
                 </div>
                 <div class="form-group">
-                    <input #product type="text" class="form-control" id="exampleFormControlInput1" placeholder="¿Qué vendes?" formControlName="product">
+                    <input #product type="text" class="form-control" id="exampleFormControlInput1" placeholder="¿Qué vendes? *" formControlName="product">
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Selecciona una categoría</label>
@@ -31,15 +31,10 @@
                         <option>Moda y accesorios</option>
                         <option>Muebles</option>
                         <option>Regalos</option>
-                        <option>Infantil</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Cuéntanos brevemente sobre tu negocio</label>
-                    <textarea #description class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
-                </div>
-                <div class="form-group">
-                    <span>Número, Calle, Ciudad, Pais</span>
+                    <span>Número, Calle, Ciudad, País *</span>
                     <input #location type="text" class="form-control" id="exampleFormControlInput1" placeholder="Dirección" formControlName="location">
                 </div>
                 <div class="form-group">
@@ -47,6 +42,10 @@
                 </div>
                 <div class="form-group">
                     <input #website type="text" class="form-control" id="exampleFormControlInput1" placeholder="Sitio web" formControlName="website">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Cuéntanos brevemente sobre tu negocio</label>
+                    <textarea #description class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Sube una foto de tu producto</label>
