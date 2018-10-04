@@ -97,7 +97,7 @@ export class MapComponent implements OnInit {
       icon: icon
     });
     marker.setData(
-     `<div class="col bg-white">
+     `<div class="col bg-white text-dark">
      <span>${place.name}</span>
      Estas a <span>${place.distance}<span> km
      <button type="button" 
