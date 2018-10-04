@@ -6,10 +6,10 @@
         <p>{{place.product}}</p>
         <p>Estas a {{place.distance}} km</p>
         <span class="btn-light text-dark rounded p-1 text-white border">{{place.category}}</span>
-        <button type="button" class="btn  btn-sm btn-danger d-block mt-2" data-toggle="modal" data-target=".modal">
+        <button type="button" class="btn  btn-sm btn-danger d-block mt-2" data-toggle="modal" [attr.data-target]="'#'+place.key">
   info</button>
 
-        <div class="modal fade " tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal fade" id="{{place.key}}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
             <div class="modal-dialog ">
                 <div class="modal-content p-4 ">
                     <h3 class="text-center">{{place.product}}</h3>

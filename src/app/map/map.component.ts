@@ -82,7 +82,8 @@ export class MapComponent implements OnInit {
     this.geo.getLocations(this.radio, [this.lat, this.lng])
     .on('key_entered', (key, location, distance) => {
       this.FirebaseService.getIndividualData(key).subscribe((place:any)=>{
-        place['distance'] = Math.trunc(distance); 
+        place['distance'] = Math.trunc(distance);
+        place['key'] = key; 
         if(this.category == 'todos'){
           this.places.push(place)
           this.addMarker(place)
@@ -150,11 +151,7 @@ export class MapComponent implements OnInit {
   }
   routing(point1){
     this.listActive =false;
-    let modal = document.getElementsByClassName("modal-backdrop")
-    for (let i = 0; i < modal.length; i++) {
-     modal[i].style.display = "none";
-    }
-    
+     
     console.log(point1)
     console.log(this.lat + ' ' +this.lng)
     let self = this

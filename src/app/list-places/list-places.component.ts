@@ -8,7 +8,8 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 export class ListPlacesComponent implements OnInit {
   @Input() place
   @Output() valueChange = new EventEmitter<any>();
-
+ 
+  modalShow : boolean = true;
   constructor() {   }
 
   ngOnInit() {
@@ -16,6 +17,7 @@ export class ListPlacesComponent implements OnInit {
   routing(point1){
     this.valueChange.emit(point1);
     console.log(point1)
+    this.modalShow = false
   }
   getRandomId() {
   return Math.floor((Math.random() * 100) + 1);
