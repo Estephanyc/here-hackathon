@@ -97,13 +97,11 @@ export class MapComponent implements OnInit {
       icon: icon
     });
     marker.setData(place.name);
-    marker.addEventListener('tap', event => {
-      console.log(event)
-      let bubble = new H.ui.InfoBubble(event.target.getPosition(), {
-        content: event.target.getData()
-      });
-      this.ui.addBubble(bubble);
-    }, false);  
+   function openModal (){
+console.log(
+  'hola'
+)    }
+    marker.addEventListener('click', openModal(), false);
     this.map.addObject(marker); 
   }
   // marcar la ubicación actual
