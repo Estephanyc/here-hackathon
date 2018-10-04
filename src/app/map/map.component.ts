@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-// import { MatBottomSheet, MatBottomSheetRef } from '@angular/material';
+import { MatBottomSheet, MatBottomSheetRef } from '@angular/material';
 
 import { MapService } from '../map.service';
 import { GeoService } from '../geoFire.service';
 import { FirebaseService } from '../firebase.service';
 import * as firebase from 'firebase';
 import { BrowserModule } from '@angular/platform-browser';
+import { BottomSheetComponent } from '../bottom-sheet/bottom-sheet.component';
 
 declare var H: any;
 
@@ -34,7 +35,7 @@ export class MapComponent implements OnInit {
   listActive: boolean = false;
   mapHeight: any = '100%'
 
-  constructor(private geo: GeoService, private MapService: MapService, private FirebaseService: FirebaseService) {
+  constructor(private bottomSheet: MatBottomSheet, private geo: GeoService, private MapService: MapService, private FirebaseService: FirebaseService) {
       this.platform = this.MapService.platformHere()
    }
   
@@ -48,6 +49,9 @@ export class MapComponent implements OnInit {
       });
     }
     console.log(this.mapHeight)
+  }
+  openBottomSheet(): void {
+    this.bottomSheet.open(BottomSheetComponent);
   }
    // Mostrar el mapa desde mi ubicación actual
   setMapCenter() {
@@ -96,12 +100,14 @@ export class MapComponent implements OnInit {
     let marker = new H.map.Marker({ "lat": place.l[0], "lng": place.l[1] }, {
       icon: icon
     });
+   
     marker.setData(place.name);
-   function openModal (){
-console.log(
-  'hola'
-)    }
-    marker.addEventListener('click', openModal(), false);
+    const self = this;
+console.log(place)
+    marker.addEventListener('tap', function():void{
+      self.bottomSheet.open(BottomSheetComponent, {
+        data: { place: place }});
+    }, false);
     this.map.addObject(marker); 
   }
   // marcar la ubicación actual

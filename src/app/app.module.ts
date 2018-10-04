@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
-
 
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -29,6 +29,7 @@ import { Header2Component } from './header2/header2.component';
 import { PlaceDetailsComponent } from './place-details/place-details.component';
 import { ConditionsComponent } from './conditions/conditions.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 
 const appRoutes: Routes = [
   {
@@ -70,12 +71,18 @@ const appRoutes: Routes = [
     PlaceDetailsComponent,
     ConditionsComponent,
     AboutUsComponent,
+    BottomSheetComponent,
+  ],
+  entryComponents: [
+    BottomSheetComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    MatBottomSheetModule,
+    BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     ReactiveFormsModule,
