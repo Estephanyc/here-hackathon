@@ -78,7 +78,7 @@ export class MapComponent implements OnInit {
     this.map.removeObjects(this.map.getObjects());
 
     //get locations con geofire
-    this.geo.getLocations(4, [this.lat, this.lng])
+    this.geo.getLocations(5, [this.lat, this.lng])
     .on('key_entered', (key, location, distance) => {
       this.FirebaseService.getIndividualData(key).subscribe((place:any)=>{
         place['distance'] = Math.trunc(distance); 

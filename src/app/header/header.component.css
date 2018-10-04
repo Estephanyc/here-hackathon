@@ -10,12 +10,13 @@
 }
 
 @media (max-width: 450px) {
-    .logo{
-        content:url("../../assets/img/isotipo2.png")
+    .logo {
+        content: url("../../assets/img/isotipo2.png")
     }
 }
+
 @media (max-width: 650px) {
-    .logo{
-        margin-top: 1.5em;
+    .logo {
+        margin-top: .8em;
     }
 }
