@@ -18,14 +18,16 @@
                         </div>
                         <div class="col-8">
                             <p>{{place.name}}</p>
+                            <p><i class="fas fa-map-marker-alt p-1 text-danger"></i>Puma 1180, Santiago, Chile</p>
                             <p><i class="fas fa-phone p-1 text-danger"></i>{{place.phone}}</p>
                             <span class="bg-danger rounded p-1 text-white border">{{place.category}}</span>
                         </div>
                     </div>
                     <div class="text-center pt-2">
-                        <p><i class="fas fa-map-marker-alt p-1 text-danger"></i>Puma 1180, Santiago, Chile</p>
                         <p>{{place.description}}</p>
-                        <p>{{place.website}}</p>
+                        <a href="{{place.website}}">{{place.website}}</a>
+                        <button type="button" class="btn btn-info"><i class="fas fa-truck"></i> Servicio a  Domicilio</button>
+
                     </div>
                 </div>
             </div>

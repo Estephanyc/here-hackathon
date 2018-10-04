@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+
 
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -8,6 +10,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 import { environment } from '../environments/environment';
 import { FirebaseService } from "./firebase.service";

@@ -1,7 +1,11 @@
-.buttom-list {
+.ver-lista {
     position: absolute;
     bottom: 10px;
-    z-index: 10;
+    z-index: 999;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0
 }
 
 .cat-cont i {
@@ -43,4 +47,31 @@
 
 .regalos {
     background-color: #F4D35E
+}
+
+.H_ib_body {
+    background: #dc3545 !important;
+    position: absolute !important;
+    bottom: .5em !important;
+    text-align: center !important;
+    padding: 0 1.2em 0 0 !important;
+    border-radius: .2em !important;
+    margin-right: -1em !important;
+    right: 0 !important;
+}
+
+.buttom-list {
+    position: absolute;
+    z-index: 999;
+    bottom: 0;
+}
+
+.header {
+    z-index: 999;
+    top: 0;
+    position: relative;
+}
+
+.place-name {
+    font-size: 1rem;
 }

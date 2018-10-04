@@ -1,67 +1,64 @@
-<div class="container-fluid">
-    <div class="col-12 col-md-8 mx-auto">
-        <app-header [style.display]="listActive ? 'none':'block'"></app-header>
-        <app-header2 [style.display]="!listActive ? 'none':'block'"></app-header2>
+<div class="row">
+    <div #map style="width: 100%; z-index: 0; left: 0; right: 0; top:0; position: absolute" [style.height]="listActive ? '40%':'100%'"></div>
+</div>
 
-        <div [style.display]="!showCategories ? 'none':'block'" class="cat-cont p-2 bg-white rounded shadow-sm  mt-2 col mx-auto" style=" position: absolute; z-index: 1; ">
-            <div class=" row ">
-                <div class="col-4 col-md-2 text-center " (click)="changeCat('Alimentación')">
-                    <div class=" cat alimentacion mx-auto ">
-                        <i class="fas fa-utensils "></i>
-                    </div>
-                    <p>Alimentación</p>
+<div class="header">
+    <app-header [style.display]="listActive ? 'none':'block'" class="bg-white"></app-header>
+    <app-header2 [style.display]="!listActive ? 'none':'block'"></app-header2>
+</div>
+<div class="col-12 col-md-8 mx-auto">
+
+    <div [style.display]="!showCategories ? 'none':'block'" class="cat-cont p-2 bg-white rounded shadow-sm  mt-2 col mx-auto" style="  z-index: 333; ">
+        <div class=" row ">
+            <div class="col-4 col-md-2 text-center " (click)="changeCat('Alimentación')">
+                <div class=" cat alimentacion mx-auto ">
+                    <i class="fas fa-utensils "></i>
                 </div>
-                <div class="col-4 col-md-2 text-center" (click)="changeCat('Hogar y decoración')">
-                    <div class=" cat hogar mx-auto ">
-                        <i class="fas fa-home "></i>
-                    </div>
-                    <p>Deco hogar</p>
+                <p>Alimentación</p>
+            </div>
+            <div class="col-4 col-md-2 text-center" (click)="changeCat('Hogar y decoración')">
+                <div class=" cat hogar mx-auto ">
+                    <i class="fas fa-home "></i>
                 </div>
-                <div class="col-4 col-md-2 text-center" (click)="changeCat('Cuidado personal')">
-                    <div class=" cat personal mx-auto ">
-                        <i class="fab fa-pagelines "></i>
-                    </div>
-                    <p>Personal</p>
+                <p>Deco hogar</p>
+            </div>
+            <div class="col-4 col-md-2 text-center" (click)="changeCat('Cuidado personal')">
+                <div class=" cat personal mx-auto ">
+                    <i class="fab fa-pagelines "></i>
                 </div>
-                <div class="col-4 col-md-2 text-center " (click)="changeCat('Moda y accesorios')">
-                    <div class=" cat moda mx-auto ">
-                        <i class="fas fa-crown "></i>
-                    </div>
-                    <p>Moda</p>
+                <p>Personal</p>
+            </div>
+            <div class="col-4 col-md-2 text-center " (click)="changeCat('Moda y accesorios')">
+                <div class=" cat moda mx-auto ">
+                    <i class="fas fa-crown "></i>
                 </div>
-                <div class="col-4 col-md-2 text-center " (click)="changeCat('Muebles')">
-                    <div class=" cat muebles mx-auto ">
-                        <i class="fas fa-bed "></i>
-                    </div>
-                    <p>Muebles</p>
+                <p>Moda</p>
+            </div>
+            <div class="col-4 col-md-2 text-center " (click)="changeCat('Muebles')">
+                <div class=" cat muebles mx-auto ">
+                    <i class="fas fa-bed "></i>
                 </div>
-                <div class="col-4 col-md-2 text-center " (click)="changeCat('Regalos')">
-                    <div class=" cat regalos mx-auto ">
-                        <i class="fas fa-gift "></i>
-                    </div>
-                    <p>Regalos</p>
+                <p>Muebles</p>
+            </div>
+            <div class="col-4 col-md-2 text-center " (click)="changeCat('Regalos')">
+                <div class=" cat regalos mx-auto ">
+                    <i class="fas fa-gift "></i>
                 </div>
+                <p>Regalos</p>
             </div>
         </div>
     </div>
+</div>
 
+<div class="col-12 col-md-8 mx-auto ver-lista">
+    <button [style.display]="listActive ? 'none':'block'" type="button" class=" btn btn-lg bg-danger text-white border mx-auto" (click)=" activeList() ">Ver productos cercanos a ti </button>
 </div>
-<div class="row">
-    <div #map style="width: 100%; z-index: 0; left: 0; right: 0;" [style.height]="listActive ? '200px':'100%'" [style.position]="listActive ? 'relative':'absolute'"></div>
-</div>
-<div>
-    <div class="row">
-        <div class="col">
-            <!--   <button [style.display]="!listActive ? 'none':'block'" type="button " class="btn btn-lg buttom-list bg-white position-fixed border" (click)="activeMap() ">Mapa
+<!--   <button [style.display]="!listActive ? 'none':'block'" type="button " class="btn btn-lg buttom-list bg-white position-fixed border" (click)="activeMap() ">Mapa
       <i class="far fa-map "></i>
     </button> -->
-            <button [style.display]="listActive ? 'none':'block'" type=" button " class=" btn btn-lg buttom-list bg-danger text-white position-fixed border mx-auto" (click)=" activeList() ">Ver productos cercanos a ti
-    </button>
-        </div>
+<div *ngIf="listActive" class="container" style="margin-top: 26%">
+    <div class="col-12 col-md-7 mx-auto mt-1">
+        <app-list-places *ngFor="let item of places " [place]="item "></app-list-places>
     </div>
-    <div *ngIf="listActive" class="container">
-        <div class="col-12 col-md-7 mx-auto mt-1">
-            <app-list-places *ngFor="let item of places " [place]="item "></app-list-places>
-        </div>
-    </div>
-    <!--[style.display]="listActive ? 'none':'block'"  -->
+</div>
+<!--[style.display]="listActive ? 'none':'block'"  -->

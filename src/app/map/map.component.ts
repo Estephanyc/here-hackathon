@@ -96,14 +96,12 @@ export class MapComponent implements OnInit {
     let marker = new H.map.Marker({ "lat": place.l[0], "lng": place.l[1] }, {
       icon: icon
     });
-    marker.setData("hola");
-    marker.addEventListener('tap', event => {
-      console.log(event)
-      let bubble = new H.ui.InfoBubble(event.target.getPosition(), {
-        content: event.target.getData()
-      });
-      this.ui.addBubble(bubble);
-    }, false);
+    marker.setData(place.name);
+   function openModal (){
+console.log(
+  'hola'
+)    }
+    marker.addEventListener('click', openModal(), false);
     this.map.addObject(marker); 
   }
   // marcar la ubicación actual
