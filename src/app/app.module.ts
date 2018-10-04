@@ -23,6 +23,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ListPlacesComponent } from './list-places/list-places.component';
 import { Header2Component } from './header2/header2.component';
 import { PlaceDetailsComponent } from './place-details/place-details.component';
+import { ConditionsComponent } from './conditions/conditions.component';
 
 
 const appRoutes: Routes = [
@@ -34,6 +35,10 @@ const appRoutes: Routes = [
   {
     path: 'map',
     component: MapComponent
+  },
+  {
+    path: 'conditions',
+    component: ConditionsComponent,
   },
   {
     path: '',
@@ -55,6 +60,7 @@ const appRoutes: Routes = [
     ListPlacesComponent,
     Header2Component,
     PlaceDetailsComponent,
+    ConditionsComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
