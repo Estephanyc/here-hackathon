@@ -1,21 +1,16 @@
-.btnSale{
-  margin-top: 1.6em;
+.btnSale {
+    margin-top: 1.6em;
 }
 
-
-.btn2{
-  background: transparent;
-  color: #DC3545;
-  border: none;
-  cursor: pointer;
+.btn2 {
+    background: transparent;
+    color: #DC3545;
+    border: none;
+    cursor: pointer;
 }
 
-@media (max-width: 600px){
-  .logo{
-    margin-top: 1em;
-  }
+@media (max-width: 600px) {
+    .logo {
+        margin-top: 1em;
+    }
 }
-
-
-
-

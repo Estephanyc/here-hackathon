@@ -96,11 +96,21 @@ export class MapComponent implements OnInit {
     let marker = new H.map.Marker({ "lat": place.l[0], "lng": place.l[1] }, {
       icon: icon
     });
-    marker.setData("hola");
+    marker.setData(
+     `<div class="col bg-white">
+     <span>${place.name}</span>
+     Estas a <span>${place.distance}<span> km
+     <button type="button" 
+     class="btn  btn-sm btn-danger d-block mt-2" data-toggle="modal" 
+     data-target=".modal"> + info </button>
+     </div>`
+
+    );
     marker.addEventListener('tap', event => {
       console.log(event)
       let bubble = new H.ui.InfoBubble(event.target.getPosition(), {
         content: event.target.getData()
+        
       });
       this.ui.addBubble(bubble);
     }, false);
