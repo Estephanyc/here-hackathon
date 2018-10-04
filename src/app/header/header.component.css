@@ -1,5 +1,5 @@
 .btnSale {
-    margin-top: 1.6em;
+    margin-top: 1.2em;
 }
 
 .btn2 {
@@ -9,8 +9,13 @@
     cursor: pointer;
 }
 
-@media (max-width: 600px) {
-    .logo {
-        margin-top: 1em;
+@media (max-width: 450px) {
+    .logo{
+        content:url("../../assets/img/isotipo2.png")
+    }
+}
+@media (max-width: 650px) {
+    .logo{
+        margin-top: 1.5em;
     }
 }
