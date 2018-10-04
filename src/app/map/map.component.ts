@@ -34,7 +34,7 @@ export class MapComponent implements OnInit {
   locations: any =[]
   listActive: boolean = false;
   mapHeight: any = '100%'
-  radio : number = 10;
+  radio : number = 15;
 
   constructor(private bottomSheet: MatBottomSheet, private geo: GeoService, private MapService: MapService, private FirebaseService: FirebaseService) {
       this.platform = this.MapService.platformHere()
@@ -142,11 +142,91 @@ export class MapComponent implements OnInit {
     this.listActive = false
   }
   changeCat(cat){
-    this.radio = 10;
-    this.showPlaces();
+    this.radio = 15;
     this.category = cat
     this.showPlaces()
     this.listActive =true
     this.showCategories =false
   }
+  routing(point1){
+    this.listActive =false;
+    let modal = document.getElementsByClassName("modal-backdrop")
+    for (let i = 0; i < modal.length; i++) {
+      console.log(modal[i].style.display = "none")
+
+      // modal[i].style.display = "none";
+    }
+    
+    console.log(point1)
+    console.log(this.lat + ' ' +this.lng)
+    let self = this
+    var routingParameters = {
+      // The routing mode:
+      'mode': 'fastest;car',
+      // The start point of the route:
+      'waypoint0': `geo!${this.lat},${this.lng}`,
+      // The end point of the route:
+      'waypoint1': `geo!${point1[0]},${point1[1]}`,
+      // To retrieve the shape of the route we choose the route
+      // representation mode 'display'
+      'representation': 'display'
+    };
+    
+    var onResult = function (result) {
+      var route,
+        routeShape,
+        startPoint,
+        endPoint,
+        linestring;
+      if (result.response.route) {
+        // Pick the first route from the response:
+        route = result.response.route[0];
+        // Pick the route's shape:
+        routeShape = route.shape;
+
+        // Create a linestring to use as a point source for the route line
+        linestring = new H.geo.LineString();
+
+        // Push all the points in the shape into the linestring:
+        routeShape.forEach(function (point) {
+          var parts = point.split(',');
+          linestring.pushLatLngAlt(parts[0], parts[1]);
+        });
+
+        // Retrieve the mapped positions of the requested waypoints:
+        startPoint = route.waypoint[0].mappedPosition;
+        endPoint = route.waypoint[1].mappedPosition;
+
+        // Create a polyline to display the route:
+        var routeLine = new H.map.Polyline(linestring, {
+          style: { strokeColor: 'blue', lineWidth: 4 }
+        });
+
+        // Create a marker for the start point:
+        var startMarker = new H.map.Marker({
+          lat: startPoint.latitude,
+          lng: startPoint.longitude
+        });
+
+        // Create a marker for the end point:
+        var endMarker = new H.map.Marker({
+          lat: endPoint.latitude,
+          lng: endPoint.longitude
+        });
+
+        // Add the route polyline and the two markers to the map:
+        self.map.addObjects([routeLine, startMarker, endMarker]);
+
+        // Set the map's viewport to make the whole route visible:
+        self.map.setViewBounds(routeLine.getBounds());
+      }
+    }
+    // Get an instance of the routing service:
+    var router = this.MapService.platformHere().getRoutingService();
+    router.calculateRoute(routingParameters, onResult,
+      function (error) {
+        alert(error.message);
+      });
+  }
 }
+  

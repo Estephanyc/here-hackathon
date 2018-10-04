@@ -58,7 +58,7 @@
     </button> -->
 <div *ngIf="listActive" class="container list" style="">
     <div class="col-12 col-md-7 mx-auto mt-1">
-        <app-list-places *ngFor="let item of places " [place]="item "></app-list-places>
+        <app-list-places *ngFor="let item of places " [place]="item" (valueChange)='routing($event)'></app-list-places>
     </div>
 </div>
 <!--[style.display]="listActive ? 'none':'block'"  -->

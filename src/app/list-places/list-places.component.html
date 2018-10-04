@@ -19,6 +19,7 @@
                         <div class="col-8">
                             <p>{{place.name}}</p>
                             <p><i class="fas fa-map-marker-alt p-1 text-danger"></i>Puma 1180, Santiago, Chile</p>
+                            <p (click)="routing(place.l)">Como llegar</p>
                             <p><i class="fas fa-phone p-1 text-danger"></i>{{place.phone}}</p>
                             <span class="bg-danger rounded p-1 text-white border">{{place.category}}</span>
                         </div>

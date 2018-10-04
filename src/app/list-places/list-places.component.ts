@@ -1,4 +1,4 @@
-import { Component, OnInit , Input} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-list-places',
@@ -7,9 +7,14 @@ import { Component, OnInit , Input} from '@angular/core';
 })
 export class ListPlacesComponent implements OnInit {
   @Input() place
+  @Output() valueChange = new EventEmitter<any>();
+
   constructor() { }
 
   ngOnInit() {
   }
-
+  routing(point1){
+    this.valueChange.emit(point1);
+    console.log(point1)
+  }
 }
