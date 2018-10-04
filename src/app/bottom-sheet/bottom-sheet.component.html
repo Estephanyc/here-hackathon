@@ -1,4 +1,4 @@
-<h3 class="text-center">{{data.place.product}}</h3>
+<h4 class="text-center">{{data.place.product}}</h4>
 <div class="row data-place">
     <div class="col-3">
         <img src="{{data.place.image}}" class="shadow img-fluid" />
@@ -7,7 +7,6 @@
         <p>{{place.product}}</p>
         <p><i class="fas fa-map-marker-alt p-1 text-danger"></i>Puma 1180, Santiago, Chile</p>
         <p *ngIf="data.place.phone"><i class="fas fa-phone p-1 text-danger"></i>{{data.place.phone}}</p>
-        <span class="bg-danger rounded p-1 text-white border">{{data.place.category}}</span>
     </div>
 </div>
 <div class="text-center pt-2">
