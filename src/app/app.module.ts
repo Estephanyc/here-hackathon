@@ -24,7 +24,7 @@ import { ListPlacesComponent } from './list-places/list-places.component';
 import { Header2Component } from './header2/header2.component';
 import { PlaceDetailsComponent } from './place-details/place-details.component';
 import { ConditionsComponent } from './conditions/conditions.component';
-
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const appRoutes: Routes = [
   {
@@ -44,6 +44,10 @@ const appRoutes: Routes = [
     path: '',
     component: SplashComponent,
   },
+  {
+    path: 'about',
+    component: AboutUsComponent,
+  },
   
 ];
 
@@ -61,6 +65,7 @@ const appRoutes: Routes = [
     Header2Component,
     PlaceDetailsComponent,
     ConditionsComponent,
+    AboutUsComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
