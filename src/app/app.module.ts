@@ -8,6 +8,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 import { environment } from '../environments/environment';
 import { FirebaseService } from "./firebase.service";

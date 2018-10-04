@@ -71,3 +71,7 @@
     top: 0;
     position: relative;
 }
+
+.place-name {
+    font-size: 1rem;
+}
