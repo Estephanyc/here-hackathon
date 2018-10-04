@@ -11,11 +11,19 @@ p {
   text-align: justify;
 }
 
-h4 {
+h2 {
   text-align: center;
   color: #dc3545;
 }
 
 .options {
   text-align: center;
+}
+
+.details {
+  font-size: 14px;
+}
+
+.enroll {
+padding: 12px;
 }
