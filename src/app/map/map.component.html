@@ -56,7 +56,7 @@
 <!--   <button [style.display]="!listActive ? 'none':'block'" type="button " class="btn btn-lg buttom-list bg-white position-fixed border" (click)="activeMap() ">Mapa
       <i class="far fa-map "></i>
     </button> -->
-<div *ngIf="listActive" class="container list" style="">
+<div *ngIf="listActive" class="container list">
     <div class="col-12 col-md-7 mx-auto mt-1">
         <app-list-places *ngFor="let item of places " [place]="item" (valueChange)='routing($event)'></app-list-places>
     </div>

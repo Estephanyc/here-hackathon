@@ -10,3 +10,7 @@ img {
 p {
     margin-bottom: .5rem;
 }
+
+.title {
+    font-size: 1.1rem;
+}

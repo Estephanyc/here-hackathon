@@ -3,11 +3,11 @@
         <img src="{{place.image}}" class=" shadow img-fluid" />
     </div>
     <div class="col-8">
-        <p>{{place.product}}</p>
+        <p class="title">{{place.product}}</p>
         <p>Estas a {{place.distance}} km</p>
-        <span class="btn-light text-dark rounded p-1 text-white border">{{place.category}}</span>
+        <span class="btn-info rounded p-1 text-white border">{{place.category}}</span>
         <button type="button" class="btn  btn-sm btn-danger d-block mt-2" data-toggle="modal" [attr.data-target]="'#'+place.key">
-  info</button>
+  + Info</button>
 
         <div class="modal fade" id="{{place.key}}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
             <div class="modal-dialog ">
@@ -25,8 +25,8 @@
                     <div class="text-center pt-2">
                         <p>{{place.description}}</p>
 
-                        <p><i class="fas fa-map-marker-alt p-1 text-danger"></i>puma 1180, Santiago, Chile</p>
-                        <button (click)="routing(place.l)" class="btn bg-danger text-white">Como llegar</button>
+                        <p><i class="fas fa-map-marker-alt p-1 text-danger"></i>{{place.adress}}</p>
+                        <button (click)="routing(place.l, place.key)" class="btn bg-danger text-white">Como llegar</button>
                         <button type="button" class="btn btn-light"><i class="fas fa-truck"></i> Servicio a  Domicilio</button>
 
                     </div>

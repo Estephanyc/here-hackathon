@@ -9,18 +9,15 @@ export class ListPlacesComponent implements OnInit {
   @Input() place
   @Output() valueChange = new EventEmitter<any>();
  
-  modalShow : boolean = true;
   constructor() {   }
 
   ngOnInit() {
   }
-  routing(point1){
+  routing(point1, key){
     this.valueChange.emit(point1);
-    console.log(point1)
-    this.modalShow = false
-  }
-  getRandomId() {
-  return Math.floor((Math.random() * 100) + 1);
-  }
-
+    let div = <HTMLElement>document.querySelector('.modal-backdrop');
+    div.style.display = "none";
+    let div2 = <HTMLElement>document.querySelector('.modal-open');
+    div2.style.overflow = "visible" 
+   }
 }
