@@ -6,8 +6,8 @@
   font-size: 4rem;
 }
 
-.mx-auto {
-  background-color: #ece9e962;
+input, select, textarea {
+  background-color: #ece9e923;
 }
 
 ::placeholder { 
