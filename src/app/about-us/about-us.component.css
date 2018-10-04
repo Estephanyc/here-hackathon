@@ -1,0 +1,22 @@
+.textInfo{
+  text-align: center;
+  padding-top: 1em;
+}
+
+.cursor-p{
+  cursor: pointer;
+}
+
+.img{
+  width: 40%;
+  margin-bottom: 2em;
+}
+
+.title{
+  color: #DC3545;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+.hands{
+  width: 40%;
+}
