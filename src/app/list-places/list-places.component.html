@@ -6,28 +6,28 @@
         <p>{{place.product}}</p>
         <p>Estas a {{place.distance}} km</p>
         <span class="btn-light text-dark rounded p-1 text-white border">{{place.category}}</span>
-        <button type="button" class="btn  btn-sm btn-danger d-block mt-2" data-toggle="modal" data-target=".modal">+ info</button>
+        <button type="button" class="btn  btn-sm btn-danger d-block mt-2" data-toggle="modal" data-target=".modal">
+  info</button>
 
         <div class="modal fade " tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
             <div class="modal-dialog ">
                 <div class="modal-content p-4 ">
-                    <h3 class="text-center">{{place.name}}</h3>
+                    <h3 class="text-center">{{place.product}}</h3>
                     <div class="row data-place">
-                        <div class="col-4">
-                            <img src="{{place.image}}" class="shadow rounded-circle img-fluid" />
+                        <div class="col-3">
+                            <img src="{{place.image}}" class="shadow  img-fluid" />
                         </div>
-                        <div class="col-8">
+                        <div class="col-9">
                             <p>{{place.name}}</p>
-                            <p><i class="fas fa-map-marker-alt p-1 text-danger"></i>Puma 1180, Santiago, Chile</p>
-                            <p (click)="routing(place.l)">Como llegar</p>
                             <p><i class="fas fa-phone p-1 text-danger"></i>{{place.phone}}</p>
-                            <span class="bg-danger rounded p-1 text-white border">{{place.category}}</span>
                         </div>
                     </div>
                     <div class="text-center pt-2">
                         <p>{{place.description}}</p>
-                        <a href="{{place.website}}">{{place.website}}</a>
-                        <button type="button" class="btn btn-info"><i class="fas fa-truck"></i> Servicio a  Domicilio</button>
+
+                        <p><i class="fas fa-map-marker-alt p-1 text-danger"></i>puma 1180, Santiago, Chile</p>
+                        <button (click)="routing(place.l)" class="btn bg-danger text-white">Como llegar</button>
+                        <button type="button" class="btn btn-light"><i class="fas fa-truck"></i> Servicio a  Domicilio</button>
 
                     </div>
                 </div>

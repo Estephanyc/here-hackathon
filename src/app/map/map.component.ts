@@ -152,9 +152,7 @@ export class MapComponent implements OnInit {
     this.listActive =false;
     let modal = document.getElementsByClassName("modal-backdrop")
     for (let i = 0; i < modal.length; i++) {
-      console.log(modal[i].style.display = "none")
-
-      // modal[i].style.display = "none";
+     modal[i].style.display = "none";
     }
     
     console.log(point1)

@@ -9,7 +9,7 @@ export class ListPlacesComponent implements OnInit {
   @Input() place
   @Output() valueChange = new EventEmitter<any>();
 
-  constructor() { }
+  constructor() {   }
 
   ngOnInit() {
   }
@@ -17,4 +17,8 @@ export class ListPlacesComponent implements OnInit {
     this.valueChange.emit(point1);
     console.log(point1)
   }
+  getRandomId() {
+  return Math.floor((Math.random() * 100) + 1);
+  }
+
 }
