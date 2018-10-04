@@ -1,0 +1,21 @@
+.container {
+  text-align: justify;
+}
+
+button {
+  display: inline;
+  margin: 1%;
+}
+
+p {
+  text-align: justify;
+}
+
+h4 {
+  text-align: center;
+  color: #dc3545;
+}
+
+.options {
+  text-align: center;
+}
