@@ -8,90 +8,55 @@
       <img class="cursor-p" routerLink="/map" src="../../assets/img/volver.png" alt="" width="40">
     </div>
   </div>
-  <div>
-    <h4>¿Qué es el comercio justo?</h4>
-    <hr>
-  </div>
-  <div>
-    <p>El comercio justo es una forma de comercio alternativa, basada en el diálogo, la transparencia y el respeto, que
-      busca una relación comercial voluntaria, equitativa y justa entre productores y consumidores.
-      Es una iniciativa para crear canales comerciales innovadores, dentro de los cuales la relación entre las partes
-      se orienta al logro de desarrollo sustentable y sostenible de la oferta.
-    </p>
-    <div>
-      <h4>Requisitos del comercio justo</h4>
+  <div class="col-md-8 mx-auto">
+      <h2>Suscripción</h2>
       <hr>
+      <p>Suscríbete a Compra Justo, palataforma digital que reune a emprendedores y consumidores en una solo lugar. Con tu ayuda lograremos mantener el funcionamiento de nuestros servicios para entregar siempre las mejores opciones a nuestros usuarios.</p>
+      <p>Por solo <span class="text-danger price">$20.000</span> anuales accede a estos beneficios:</p>
+      <ul>
+        <li>Tu emprendimiento o productos aparecerán en el mapa interactivo.</li>
+        <li>Los clientes podrán acceder a información detallada de tus productos.</li>
+        <li>Los clientes podrán contactarte por medio de la información de contacto que</li>
+      </ul>
     </div>
-    <div>
-      <ol>
-        <li>Creación de oportunidades para productores y productoras en desventaja económica.</li>
-        <li>Transparencia y rendición de cuentas.</li>
-        <li>Relaciones comerciales justas.</li>
-        <li>Pago de un precio justo.</li>
-        <li>Respeto de las normas de trabajo infantil y explotación laboral.</li>
-        <li>Compromiso con la equidad de género, la no discriminación y la libertad de asociación.</li>
-        <li>Condiciones de trabajo y prácticas saludables.</li>
-        <li>Desarrollo de Capacidades.</li>
-        <li>Promoción del Comercio Justo.</li>
-        <li>Respeto por el ambiente.</li>
-      </ol>
-      <div class="options">
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Términos y
-          condiciones</button>
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal2">Suscripción</button>
-        <button routerLink="/add" class="btn btn-danger">Inscríbete acá</button>
+  </div>
+  <div>
+    <div class="options">
+      <a class="details" href="" data-toggle="modal" data-target="#exampleModal">Términos y
+        condiciones</a>
+      <div>
+        <button routerLink="/add" class="btn btn-danger enroll">Suscríbete <i class="fas fa-check"></i></button>
       </div>
     </div>
   </div>
 
-  <!-- Modal términos y condiciones -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Términos y condiciones</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-           <p> Al utilizar este sitio, declaras que tienes al menos la mayoría de edad en tu estado o provincia de residencia.</p>
-          <p>No puedes usar nuestros productos con ningún propósito ilegal o no autorizado, tampoco puedes, en el uso del Compra Justa, violar cualquier ley en tu jurisdicción (incluyendo pero no limitado a las leyes de derecho de autor.</p>
-          <p>No nos hacemos responsables si la información disponible en este sitio no es exacta, completa o actual.</p>
-          <p>El incumplimiento o violación de cualquiera de estos sérminos darán lugar al cese inmediato de tus servicios.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
-        </div>
+<!-- Modal términos y condiciones -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Términos y condiciones</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li>Creación de oportunidades para productores y productoras en desventaja económica.</li>
+          <li>Transparencia y rendición de cuentas.</li>
+          <li>Relaciones comerciales justas.</li>
+          <li>Pago de un precio justo.</li>
+          <li>Respeto de las normas de trabajo infantil y explotación laboral.</li>
+          <li>Compromiso con la equidad de género, la no discriminación y la libertad de asociación.</li>
+          <li>Condiciones de trabajo y prácticas saludables.</li>
+          <li>Desarrollo de Capacidades.</li>
+          <li>Promoción del Comercio Justo.</li>
+          <li>Respeto por el ambiente.</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
       </div>
     </div>
   </div>
-
-  <!-- Modal suscripción -->
-  <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Suscripción</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <p>Suscríbete a Compra Justo, el mapa que reune a emprendedores y consumidores en una sola plataforma digital.</p>
-            <p>Por solo $20.000 anuales accede a estos beneficios:</p>
-            <ul>
-            <li>Tu emprendimiento o productos aparecerán en el mapa interactivo.</li>
-            <li>Los clientes podrán acceder a información detallada de tus productos.</li>
-            <li>Los clientes podrán contactarte por medio de la información de contacto que proporciones.</li>
-            <li>Por medio de categorías, los usuarios podrán encontrar tu producto.</li>
-          </ul>
-          <p>Para más información escríbenos a: comprajusto@gmail.com</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
