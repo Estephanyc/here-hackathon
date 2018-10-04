@@ -1,5 +1,5 @@
 <div class="row">
-    <div #map style="width: 100%; z-index: 0; left: 0; right: 0; top:0; position: absolute" [style.height]="listActive ? '40%':'100%'"></div>
+    <div #map style="width: 100%; z-index: 0; left: 0; right: 0; top:0; position: absolute" [style.height]="listActive ? '50%':'100%'"></div>
 </div>
 
 <div class="header">
@@ -51,12 +51,12 @@
 </div>
 
 <div class="col-12 col-md-8 mx-auto ver-lista">
-    <button [style.display]="listActive ? 'none':'block'" type="button" class=" btn btn-lg bg-danger text-white border mx-auto" (click)=" activeList() ">Ver productos cercanos a ti </button>
+    <button [style.display]="listActive ? 'none':'block'" type="button" class=" btn btn-lg bg-danger text-white border mx-auto" (click)="nearbyPlaces()">Ver productos cercanos a ti </button>
 </div>
 <!--   <button [style.display]="!listActive ? 'none':'block'" type="button " class="btn btn-lg buttom-list bg-white position-fixed border" (click)="activeMap() ">Mapa
       <i class="far fa-map "></i>
     </button> -->
-<div *ngIf="listActive" class="container" style="margin-top: 26%">
+<div *ngIf="listActive" class="container list" style="">
     <div class="col-12 col-md-7 mx-auto mt-1">
         <app-list-places *ngFor="let item of places " [place]="item "></app-list-places>
     </div>

@@ -34,6 +34,7 @@ export class MapComponent implements OnInit {
   locations: any =[]
   listActive: boolean = false;
   mapHeight: any = '100%'
+  radio : number = 10;
 
   constructor(private bottomSheet: MatBottomSheet, private geo: GeoService, private MapService: MapService, private FirebaseService: FirebaseService) {
       this.platform = this.MapService.platformHere()
@@ -78,7 +79,7 @@ export class MapComponent implements OnInit {
     this.map.removeObjects(this.map.getObjects());
 
     //get locations con geofire
-    this.geo.getLocations(5, [this.lat, this.lng])
+    this.geo.getLocations(this.radio, [this.lat, this.lng])
     .on('key_entered', (key, location, distance) => {
       this.FirebaseService.getIndividualData(key).subscribe((place:any)=>{
         place['distance'] = Math.trunc(distance); 
@@ -103,7 +104,7 @@ export class MapComponent implements OnInit {
    
     marker.setData(place.name);
     const self = this;
-console.log(place)
+    console.log(place)
     marker.addEventListener('tap', function():void{
       self.bottomSheet.open(BottomSheetComponent, {
         data: { place: place }});
@@ -123,6 +124,15 @@ console.log(place)
       });
     this.map.addObject(marker);
   }
+  nearbyPlaces(){
+    this.radio = 5;
+    this.showPlaces();
+    this.listActive = true;
+    this.showCategories = false
+    this.markerCurrentPosition();
+
+  }
+
   activeList() {
     this.listActive = true
     this.showCategories = false
@@ -132,6 +142,8 @@ console.log(place)
     this.listActive = false
   }
   changeCat(cat){
+    this.radio = 10;
+    this.showPlaces();
     this.category = cat
     this.showPlaces()
     this.listActive =true
