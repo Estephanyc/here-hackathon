@@ -3,7 +3,12 @@
 }
 
 button {
+  display: inline;
   margin: 1%;
+}
+
+p {
+  text-align: justify;
 }
 
 h4 {
