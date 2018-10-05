@@ -4,11 +4,11 @@
         <img src="{{data.place.image}}" class="shadow img-fluid" />
     </div>
     <div class="col-7">
-        <p>{{place.product}}</p>
-        <p><i class="fas fa-map-marker-alt p-1 text-danger"></i>Puma 1180, Santiago, Chile</p>
+        <p>{{place.name}}</p>
+        <p><i class="fas fa-map-marker-alt p-1 text-danger"></i><span>1478, Exposición, Santiago</span></p>
         <p *ngIf="data.place.phone"><i class="fas fa-phone p-1 text-danger"></i>{{data.place.phone}}</p>
     </div>
 </div>
 <div class="text-center pt-2">
-    <button type="button" class="btn btn-info"><i class="fas fa-truck"></i> Servicio a Domicilio</button>
+    <button type="button" class="btn btn-light"><i class="fas fa-truck"></i> Servicio a Domicilio</button>
 </div>

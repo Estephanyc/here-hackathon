@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { MatBottomSheet, MatBottomSheetRef } from '@angular/material';
+import { MatBottomSheet, MatBottomSheetRef, MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material';
 
 import { MapService } from '../map.service';
 import { GeoService } from '../geoFire.service';
@@ -34,7 +34,7 @@ export class MapComponent implements OnInit {
   locations: any =[]
   listActive: boolean = false;
   mapHeight: any = '100%'
-  radio : number = 15;
+  radio : number = 20;
 
   constructor(private bottomSheet: MatBottomSheet, private geo: GeoService, private MapService: MapService, private FirebaseService: FirebaseService) {
       this.platform = this.MapService.platformHere()
@@ -60,7 +60,7 @@ export class MapComponent implements OnInit {
     const self = this;
     this.map = new H.Map(
       this.mapElement.nativeElement,
-      defaultLayers.normal.map,
+      defaultLayers.terrain.map,
       {
         zoom: 12,
         center: { lat: self.lat, lng: self.lng }
@@ -98,7 +98,17 @@ export class MapComponent implements OnInit {
     })
   }
   addMarker(place){
-    let icon = new H.map.Icon('../../assets/img/marck-places.png');
+    let path;
+    if(place.category == 'Alimentación') path = '../../assets/img/marks/marcadoralimentacion.png';
+    if(place.category == 'Muebles') path ='../../assets/img/marks/marcadormuebles.png';
+    if(place.category == 'Regalos') path ='../../assets/img/marks/marcadorregalos.png';
+    if(place.category == 'Moda y accesorios') path = '../../assets/img/marks/marcadormoda.png';
+    if(place.category == 'Hogar y decoración') path = '../../assets/img/marks/marcadordecohogar.png';
+    if(place.category == 'Cuidado personal') path = '../../assets/img/marks/marcadorcuidadopersonal.png';
+    else{
+      if (place.category == 'Cuidado personal') path = '../../assets/img/marks/marcador.png';
+    }
+   let icon = new H.map.Icon(path);
     let marker = new H.map.Marker({ "lat": place.l[0], "lng": place.l[1] }, {
       icon: icon
     });
@@ -115,7 +125,7 @@ export class MapComponent implements OnInit {
   // marcar la ubicación actual
   markerCurrentPosition(){
     console.log('marcar la actual')
-    let icon = new H.map.Icon('../../assets/img/current-location.png'),
+    let icon = new H.map.Icon('../../assets/img/marks/current.png'),
       coords = {
         lat: this.lat,
         lng: this.lng
@@ -143,7 +153,7 @@ export class MapComponent implements OnInit {
     this.listActive = false
   }
   changeCat(cat){
-    this.radio = 15;
+    this.radio = 20;
     this.category = cat
     this.showPlaces()
     this.listActive =true
