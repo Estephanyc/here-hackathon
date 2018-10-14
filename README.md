@@ -1,27 +1,35 @@
-# HereHackathon
+![logoinicio.png](attachments/42edf272.png)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
+Puedes revisar el sitio haciendo click [aquí](https://here-hackaton.firebaseapp.com)
 
-## Development server
+#### Preámbulo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Este proyecto se desarrolla bajo el desafío planteado por Here, crear una aplicación web con impacto social y uso masivo, implementando alguna de sus API.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+#### Contexto
 
-## Build
+La temática que escogimos para desarrollar el proyecto es la del ‘Comercio Justo’, una asociación de comercio basada en el diálogo, la transparencia y el respeto, que busca una mayor equidad en el comercio de pequeños productores y es una poderosa herramienta que fomenta el emprendimiento, garantizando los derechos, la dignidad y el desarrollo de todas las partes implicadas.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Para esto utilizamos las siguientes tecnologías: Angular 6, Firebase, Geofire, Api Here maps, Api Here geocoding, Api Here routing y Api Here places.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### Objetivos
 
-## Running end-to-end tests
+Enfocándonos en esta idea, creamos "Compra Justo", cuyo fin es que los emprendedores sean parte de una plataforma que les permita exponer sus productos y así poder conectarse con los consumidores, ya que se estima que en Chile 8 de cada 10 emprendedores fracasan por falta de clientes.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+#### Detalles sobre la aplicación
 
-## Further help
+Compra Justo tiene 2 flujos de uso, uno para productores y otros para consumidores. 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+¿Eres emprendedor? tienes una sección donde puedes informarte sobre cómo pertenecer a la red de vendedores, tenemos una suscripción de $20000 anuales que nos permitirá mantener el sitio y ofrecer un mejor servicio, también puedes leer los términos y condiciones, después de efectuada la suscripción puedes agregar tu sitio y poner información relevante para que puedan encontrarte. En este momento se publican automáticamente pero la idea es que tenga una revisión para verificar si efectivamente cumple con los términos y condiciones .
+
+Si eres un comprador puedes ver nuestros sitios asociados de varias formas, en primera instancia podrás ver los comercios dentro de la región identificados por un marcador de color según la categoría. Podrás explorar los comercios más cercanos a tu ubicación actual en un radio de 5km y se te indicará la distancia a la que estás de ellos y también puedes buscar a través de las 6 categorías disponibles; alimentación, hogar, personal, moda, muebles y regalos. De ambas maneras los comercios se mostrarán en el mapa en la parte superior y también en una lista con información básica de contacto, al seleccionar uno de ellos se despliega información más detallada y un botón que permite generar una ruta desde el punto actual a la dirección del comercio escogido. 
+
+
+Para concluir, te invitamos a utilizar "Compra Justo", para que así honremos a los pequeños productores y aprendamos a reconocer en ellos el esfuerzo que hacen por innovar y entregar lo mejor de Chile.
+
+
+
+Para ver más detalles sobre el proceso UX, haz click aqui [Documentación UX](https://docs.google.com/document/d/1174Nc4Eo73vtY-XfYcR0yWoQByjCU9LSjilSw-mreLo/edit?usp=sharing)
+
