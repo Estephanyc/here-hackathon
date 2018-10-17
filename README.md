@@ -1,4 +1,5 @@
-![compra-justa png](https://user-images.githubusercontent.com/38702172/46916021-fce36e80-cf8a-11e8-9068-160ba29a41f4.png)
+## Compra justo
+![compra-justo-](https://user-images.githubusercontent.com/38702172/47121236-4f04e800-d248-11e8-94d2-067e9f72a2bc.jpg)
 
 Puedes revisar el sitio haciendo click [aquí](https://here-hackaton.firebaseapp.com)
 
